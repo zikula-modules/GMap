@@ -1,0 +1,42 @@
+<!--[* $Id: GoogleMap_admin_config.tpl 193 2006-05-14 22:22:36Z chestnut $ *]-->
+<!--[include file="gmap_admin_menu.html"]-->
+
+<h2><!--[ pnml name="_MODIFYCONFIG" ]--></h2>
+<!--[ pnform ]-->
+  <div>
+    <div class="gmfloatbox">
+        <!--[ pnformvalidationsummary ]-->
+        <dl class="gmclearfix">
+            <!--[capture assign="googlekeylink"]--><a href="http://code.google.com/apis/maps/"><!--[ pnml name="_GM_GOOGLEKEY" ]--></a><!--[/capture]-->
+            <dt><!--[ pnformlabel for="googlekey" text=$googlekeylink html=1 ]--></dt>
+            <dd><!--[ pnformtextinput size="50" maxLength="100" id="googlekey" text=$pncore.gmap.googlekey|pnvarprepfordisplay ]--></dd>
+
+            <dt><!--[ pnformlabel for="initiallat" text='_GM_INITIALLATITUDE' ]--></dt>
+            <dd><!--[ pnformfloatinput size="15" maxLength="20" id="initiallat" text=$pncore.gmap.initiallat|pnvarprepfordisplay ]--></dd>
+
+            <dt><!--[ pnformlabel for="initiallong" text='_GM_INITIALLONGITUDE' ]--></dt>
+            <dd><!--[ pnformfloatinput size="15" maxLength="20" id="initiallong" text=$pncore.gmap.initiallong|pnvarprepfordisplay ]--></dd>
+
+            <dt><!--[ pnformlabel for="mapheight" text='_GM_MAPHEIGHT' ]--></dt>
+            <dd><!--[ pnformintinput size="5" maxLength="5" id="mapheight" text=$pncore.gmap.mapheight|pnvarprepfordisplay ]--></dd>
+
+            <dt><!--[ pnformlabel for="mapwidth" text='_GM_MAPWIDTH' ]--></dt>
+            <dd><!--[ pnformintinput size="5" maxLength="5" id="mapwidth" text=$pncore.gmap.mapwidth|pnvarprepfordisplay ]--></dd>
+
+            <dt><!--[ pnformlabel for="initialzoomlevel" text='_GM_INITIALZOOMLEVEL' ]--></dt>
+            <dd><!--[ pnformdropdownlist id="initialzoomlevel" items=$zoomlevels selectedValue=$pncore.gmap.initialzoomlevel ]--></dd>
+
+            <dt><!--[ pnformlabel for="initialmaptype" text='_GM_INITIALMAPTYPE' ]--></dt>
+            <dd><!--[ pnformdropdownlist id="initialmaptype" items=$maptypes selectedValue=$pncore.gmap.initialmaptype ]--></dd>
+
+            <dt><!--[ pnformlabel for="showuserlist" text='_GM_SHOWUSERLIST' ]--></dt>
+            <dd><!--[ pnformcheckbox id="showuserlist" checked=$pncore.gmap.showuserlist ]--></dd>
+        </dl>
+    </div>
+    <p>
+        <!--[pnformbutton id="submit" commandName="submit" text="_UPDATECONFIG"]-->
+    </p>
+  </div>
+<!--[ /pnform ]-->
+
+<!--[include file="gmap_admin_footer.html"]-->

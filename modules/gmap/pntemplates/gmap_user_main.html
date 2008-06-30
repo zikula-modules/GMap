@@ -1,0 +1,34 @@
+<!--[* $Id: GoogleMap_user_main.tpl 190 2006-05-14 20:24:19Z chestnut $ *]-->
+<h2><!--[pnml name='_GM_TITLE']--></h2>
+<!--[pngetstatusmsg]-->
+<div class="gmap">
+
+
+    <div style="margin:auto; margin-bottom:25px;">
+    <!--[if $ismapped]-->
+      <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_MODIFYCOORDS']-->"><!--[pnml name='_GM_MODIFYCOORDS']--></a>
+    <!--[else]-->
+      <!--[if $canaddmarker]-->
+        <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_ADDYOURCOORDS']-->"><!--[pnml name='_GM_ADDYOURCOORDS']--></a>
+      <!--[/if]-->
+    <!--[/if]-->
+    </div>
+  
+    <!--[**********************************************************************************]-->
+    <!--[* Zikula gmap javascript has been moved in its own template...              *]-->
+    <!--[* If you plan to overide this template (for a Xanthia theme for example), don't  *]-->
+    <!--[* forget to also copy the mapjs template to the same location...                 *]-->
+    <!--[**********************************************************************************]-->
+    <!--[include file='gmap_user_mapjs.html']-->
+  
+    <div id="mapcontainer" style="margin:auto; width:950px;">
+      <div id="map" style="margin:auto; width:<!--[$modvars.mapwidth]-->px; height:<!--[$modvars.mapheight]-->px; float:left;"></div>
+      <!--[*if $modvars.showuserlist*]-->
+      <div id="mapsidebar" style="float:right; width:<!--[math equation='x - y' x=945 y=$modvars.mapwidth]-->px; text-align:left;"></div>
+      <!--[*/if*]-->
+      <div style="clear:both; width:100%;"></div>
+      <div id="message" style="text-align:left;"></div>
+      <div style="clear:both;"><br /><br /></div>
+  
+    </div>
+</div>

@@ -1,0 +1,73 @@
+/* $Id: googlemap.css 140 2006-04-28 14:35:11Z chestnut $ */
+
+#gmap {
+  margin: 2em;
+}
+
+#gmap dl,
+#gmap-admin dl {
+    float: left;
+}
+    
+#gmap dl dt,
+#gmap-admin dl dt {
+    clear: both;
+    margin: 3px;
+    float: left; 
+    font-weight: normal;
+    width: 200px;
+}
+
+#gmap dl dd,
+#gmap-admin dl dd {
+    margin: 3px 0;
+    float: left;
+}
+
+/*
+ * clearfix solution
+ *
+ */
+
+.gmclearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.gmclearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .gmclearfix {height: 1%;}
+.gmclearfix {display: block;}
+/* End hide from IE-mac */
+
+/* Overflow-Methode zum Clearen der Float-Umgebungen */
+.gmfloatbox { 
+    overflow:hidden; 
+}
+
+#gmap-admin {
+  /* do not delete me */
+}
+
+#gmap-admin h2 {
+    margin-top: 1.2em;
+}
+
+#gmap-admin .footer {
+    font-size: 0.8em;
+    text-align: center;
+    margin-top: 1em;
+}
+
+#gmap-admin table tbody tr {
+ }
+
+#gmap-admin table thead tr th,
+#gmap-admin table tbody tr td {
+    padding: 0 10px;
+    text-align: center;
+}

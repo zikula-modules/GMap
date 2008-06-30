@@ -1,0 +1,43 @@
+<!--[* $Id: GoogleMap_admin_addspecial.tpl 193 2006-05-14 22:22:36Z chestnut $ *]-->
+<!--[include file="gmap_admin_menu.html"]-->
+
+
+    <h2><!--[if $action eq 'add']--><!--[pnml name='_GM_ADDSPECIALMARKER']--><!--[else]--><!--[pnml name='_GM_UPDATESPECIALMARKER']--><!--[/if]--></h2>
+    <p>
+        <!--[ pnml name="_GM_USERINPUTHINT" ]-->
+    </p>
+    <form action="<!--[pnmodurl modname="gmap" type="admin" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+    <div>
+        <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="gmap"]-->" />
+        <input type="hidden" name="uid" value="<!--[$uid]-->" />
+        <input type="hidden" name="mid" value="<!--[$mid]-->" />
+        <div class="gmfloatbox">
+            <dl class="gmclearfix">
+                <dt><label for="gmap_title"><!--[ pnml name="_GM_MARKERTITLE" ]--></label></dt>
+                <dd><input id="gmap_title" type="text" name="title" size="15" value="<!--[$title|pnvarprepfordisplay]-->" /></dd>
+                
+                <dt><label for="gmap_msg"><!--[pnml name='_GM_SHORTMESSAGE']--></label></dt>
+                <dd><input id="gmap_msg" type="text" name="msg" size="60" maxlength="100" value="<!--[$msg|pnvarprepfordisplay]-->" /></dd>
+                
+                <dt><label for="gmap_longitude"><!--[pnml name='_GM_LONGITUDE']--></label></dt>
+                <dd><input id="gmap_longitude" type="text" name="longitude" size="15" value="<!--[$long|pnvarprepfordisplay]-->" /></dd>
+                
+                <dt><label for="gmap_latitude"><!--[pnml name='_GM_LATITUDE']--></label></dt>
+                <dd><input id="gmap_latitude" type="text" name="latitude" size="15" value="<!--[$lat|pnvarprepfordisplay]-->" /> </dd>
+                
+                <dt><label for="gmap_icon"><!--[pnml name='_GM_MARKERICON']--></label></dt>
+                <dd>
+                    <select id="gmap_icon" name="icon">
+                    <!--[html_options options=$icons selected=$icon]-->
+                    </select>
+                  <p><img id="icon_img" src="<!--[ $ifolder|pnvarprepfordisplay ]-->/<!--[ $icon|pnvarprepfordisplay ]-->" alt="" /></p></dd>   
+            </dl>
+        </div>
+        <p>
+            <input name="submit" type="submit" value="<!--[pnml name="_UPDATE"]-->" />
+        </p>
+    </div>
+    </form>
+
+
+<!--[include file="gmap_admin_footer.html"]-->

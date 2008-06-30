@@ -1,0 +1,40 @@
+<!--[* $Id: GoogleMap_user_addme.tpl 190 2006-05-14 20:24:19Z chestnut $ *]-->
+
+
+<div id="gmap">
+
+    <h1><!--[if $action eq 'add']--><!--[pnml name='_GM_ADDYOURCOORDS']--><!--[else]--><!--[pnml name='_GM_MODIFYCOORDS']--><!--[/if]--></h1>
+    <p>
+        <!--[ pnml name="_GM_USERINPUTHINT" ]-->
+    </p>
+    <form action="<!--[pnmodurl modname="gmap" type="user" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">
+    <div>
+        <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="gmap"]-->" />
+        <div class="gmfloatbox">
+            <dl class="gmclearfix">
+                <dt><label for="gmap_latitude"><!--[pnml name='_GM_LATITUDE']--></label></dt>
+                <dd><input id="gmap_latitude" type="text" name="latitude" size="15" value="<!--[$lat]-->" /></dd>
+            
+                <dt><label for="gmap_longitude"><!--[pnml name='_GM_LONGITUDE']--></label></dt>
+                <dd><input id="gmap_longitude" type="text" name="longitude" size="15" value="<!--[$long]-->" /></dd>
+            
+                <dt><label for="gmap_msg"><!--[pnml name='_GM_SHORTMESSAGE']--></label></dt>
+                <dd><input id="gmap_msg" type="text" name="msg" size="60" maxlength="100" value="<!--[$msg|pnvarprepfordisplay]-->" /></dd>
+
+                <dt><label for="gmap_icon"><!--[pnml name='_GM_MARKERICON']--></label></dt>
+                <dd>
+                    <select id="gmap_icon" name="icon">
+                    <!--[html_options options=$icons selected=$icon]-->
+                    </select>
+                    <p><img id="icon_img" src="modules/gmap/pnimages/<!--[ $icon|pnvarprepfordisplay ]-->" alt="" /></p>   
+                </dd>
+
+            </dl>
+        </div>
+        
+        <p>
+            <input name="submit" type="submit" value="<!--[pnml name="_UPDATE"]-->" />
+        </p>
+    </div>
+    </form>
+</div>

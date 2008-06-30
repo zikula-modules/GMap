@@ -1,0 +1,42 @@
+<!--[* $Id: GoogleMap_admin_deletemarker.tpl 193 2006-05-14 22:22:36Z chestnut $ *]-->
+<!--[include file="gmap_admin_menu.html"]-->
+
+<h2><!--[pnml name="_GM_DELETEMARKER"]--></h2>
+  <form class="pn-adminform" action="<!--[pnmodurl modname="gmap" type="admin" func="delete"]-->" method="post" enctype="application/x-www-form-urlencoded">
+    <div>
+
+    <table summary="<!--[pnml name='_GM_SPECIALMARKERS']-->">
+        <thead>
+            <tr>
+                <th><!--[ pnml name="_GM_ID" ]--></th>
+                <th><!--[ pnml name="_GM_MARKERTITLE" ]--></th>
+                <th><!--[ pnml name="_GM_LATITUDE" ]--></th>
+                <th><!--[ pnml name="_GM_LONGITUDE" ]--></th>
+                <th><!--[ pnml name="_GM_MESSAGE" ]--></th>
+                <th><!--[ pnml name="_GM_ICON" ]--></th>
+                <th><!--[ pnml name="_GM_CONFIRMCHECK" ]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><!--[$mid|pnvarprepfordisplay]--></td>
+                <td><!--[$title|pnvarprepfordisplay]--></td>
+                <td><!--[$lat|pnvarprepfordisplay]--></td>
+                <td><!--[$long|pnvarprepfordisplay]--></td>
+                <td><!--[$msg|pnvarprepfordisplay]--></td>
+                <td><!--[pnimg src=$icon|pnvarprepfordisplay alt=$icon|pnvarprepfordisplay]--></td>
+                <td><input id="confirm" name="confirm" type="checkbox" value="1" /></td>
+            </tr>                 
+        </tbody>
+    </table>
+    
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="gmap"]-->" />
+    <input type="hidden" name="mid" value="<!--[$mid|pnvarprepfordisplay]-->" />
+    <p>
+        <input name="submit" type="submit" value="<!--[pnml name="_CONFIRM"]-->" />
+    </p>
+    <div style="clear:both"></div>
+    </div>
+  </form>
+
+<!--[include file="gmap_admin_footer.html"]-->

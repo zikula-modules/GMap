@@ -1,0 +1,65 @@
+<!--[* $Id: GoogleMap_admin_markers.tpl 193 2006-05-14 22:22:36Z chestnut $ *]-->
+<!--[include file="gmap_admin_menu.html"]-->
+
+  <h2><!--[pnml name="_GM_SPECIALMARKERS"]--></h2>
+  <table summary="<!--[pnml name='_GM_SPECIALMARKERS']-->">
+  <thead>
+    <tr>
+      <th><!--[ pnml name="_GM_ID" ]--></th>
+      <th><!--[ pnml name="_GM_MARKERTITLE" ]--></th>
+      <th><!--[ pnml name="_GM_LATITUDE" ]--></th>
+      <th><!--[ pnml name="_GM_LONGITUDE" ]--></th>
+      <th><!--[ pnml name="_GM_MESSAGE" ]--></th>
+      <th><!--[ pnml name="_GM_ICON" ]--></th>
+      <th><!--[ pnml name="_GM_OPTIONS" ]--></th>
+    </tr>
+  </thead>
+  <tbody>
+  <!--[foreach item='special' from=$specials]-->
+    <tr>
+      <td><!--[$special.mid]--></td>
+      <td><!--[$special.title|pnvarprepfordisplay]--></td>
+      <td><!--[$special.lat|pnvarprepfordisplay]--></td>
+      <td><!--[$special.long|pnvarprepfordisplay]--></td>
+      <td><!--[$special.msg|pnvarprepfordisplay]--></td>
+      <td><img src="modules/gmap/pnimages/specials/<!--[ $special.icon ]-->" alt="<!--[ $special.icon]-->" /></td>
+      <td><a href="<!--[pnmodurl modname='gmap' type='admin' func='modify' mid=$special.mid ]-->" title="<!--[pnml name="_EDIT"]-->"><!--[pnimg src=xedit.gif modname=core set=icons/extrasmall title='_EDIT' titleml=true alt='_EDIT' altml=true]--></a>
+           /
+           <a href="<!--[pnmodurl modname='gmap' type='admin' func='delete' mid=$special.mid ]-->" title="<!--[pnml name="_DELETE"]-->"><!--[ pnimg src=14_layer_deletelayer.gif modname=core set=icons/extrasmall  alt="_DELETE" altml=true title="_DELETE" titleml=true]--></a></td>
+    </tr>
+  <!--[/foreach]-->
+  </tbody>
+  </table>
+
+  <h2><!--[pnml name="_GM_USERMARKERS"]--></h2>
+  <table summary="<!--[pnml name='_GM_USERMARKERS']-->">
+  <thead>
+    <tr>
+      <th><!--[ pnml name="_GM_ID" ]--></th>
+      <th><!--[ pnml name="_USERNAME ]--></th>
+      <th><!--[ pnml name="_GM_LATITUDE" ]--></th>
+      <th><!--[ pnml name="_GM_LONGITUDE" ]--></th>
+      <th><!--[ pnml name="_GM_MESSAGE" ]--></th>
+      <th><!--[ pnml name="_GM_ICON" ]--></th>
+      <th><!--[ pnml name="_GM_OPTIONS" ]--></th>
+    </tr>
+  </thead>
+  <tbody>
+  <!--[foreach item='item' from=$items]-->
+    <tr>
+      <!--[pnusergetvar name='uname' uid=$item.uid assign='uname']-->
+      <td><!--[$item.mid]--></td>
+      <td><a href="<!--[ pnmodurl modname="Profile" type="user" func="view" uname=$uname ]-->" title="<!--[$uname]-->"><!--[$uname]--></a></td>
+      <td><!--[$item.lat|pnvarprepfordisplay]--></td>
+      <td><!--[$item.long|pnvarprepfordisplay]--></td>
+      <td><!--[$item.msg|pnvarprepfordisplay]--></td>
+      <td><img src="modules/gmap/pnimages/<!--[ $item.icon ]-->" alt="<!--[ $item.icon]-->" /></td>
+      <td><a href="<!--[pnmodurl modname='gmap' type='admin' func='modify' mid=$item.mid ]-->" title="<!--[pnml name="_EDIT"]-->"><!--[pnimg src=xedit.gif modname=core set=icons/extrasmall title='_EDIT' titleml=true alt='_EDIT' altml=true]--></a>
+           /
+           <a href="<!--[pnmodurl modname='gmap' type='admin' func='delete' mid=$item.mid ]-->" title="<!--[pnml name="_DELETE"]-->"><!--[ pnimg src=14_layer_deletelayer.gif modname=core set=icons/extrasmall  alt="_DELETE" altml=true title="_DELETE" titleml=true]--></a></td>
+    </tr>
+  <!--[/foreach]-->
+  </tbody>
+  </table>
+
+<!--[include file="gmap_admin_footer.html"]-->

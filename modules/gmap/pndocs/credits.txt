@@ -1,0 +1,37 @@
+/**
+ * Zikula Application Framework
+ *
+ * @copyright (c) 2001, Zikula Development Team
+ * @link http://www.zikula.org
+ * @version $Id: credits.txt 185 2006-05-14 20:14:24Z chestnut $
+ * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
+ */
+ 
+GOOGLEMAP Zikula MODULE
+-------------------------
+
+CREDITS:
+
+(14-05-2006)
+Credits goes to HostIP.Info for their Geo Lookup API Access...
+Thanks Guys...
+-------------------------
+
+(28-04-2006)
+Frank Chestnut - http://dev.pnconcept.com
+
+
+Additional credits for starting the buzz:
+mosabua - http://mosabuam.com/
+
+
+Google... for letting us see naked women on some nice beach
+with HiRez Satellite images......
+
+
+
+..... ahem... sorry darlin', I assure you, I did not look.
+
+
+
+FC !

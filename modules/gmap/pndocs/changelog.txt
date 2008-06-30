@@ -1,0 +1,31 @@
+/**
+ * Zikula Application Framework
+ *
+ * @copyright (c) 2001, Zikula Development Team
+ * @link http://www.zikula.org
+ * @version $Id: changelog.txt 185 2006-05-14 20:14:24Z chestnut $
+ * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
+ */
+
+GOOGLEMAP Zikula MODULE
+-------------------------
+
+2.0 - New Features (14-05-2006)
+
+    - More complete administration
+	- Add your marker on the map
+	- Add special marker
+	- Show / Hide Users
+	- Show / Hide Specials
+	- Show / Hide Onlines
+	- Show Online Visitors via HostIP.info Geo database
+
+-------------------------
+
+1.1 - Fixed Release (05-05-2006)
+
+    - Fixed permission check in administration
+
+-------------------------
+
+1.0 - Initial Release (28-04-2006)
