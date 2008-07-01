@@ -1,4 +1,4 @@
-/* $Id:  $ */
+/* $Id$ */
 
 Event.observe(window, 'load', function() {
         Event.observe($('gmap_icon'), 'change', function() {

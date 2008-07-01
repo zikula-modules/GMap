@@ -1,5 +1,5 @@
 <?php
-// $Id: for_admin_modifyconfighandler.class.php 107 2008-05-23 09:22:59Z landseer $
+// $Id$
 // ----------------------------------------------------------------------
 // LICENSE
 //
