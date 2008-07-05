@@ -55,14 +55,17 @@ function gmap_userapi_get($args)
 
 function gmap_userapi_ismapped($args)
 {
-    if (!isset($args['uid']) || empty($args['uid'])) {
-        $uid = pnUserGetVar('uid');
-    } else {
-        $uid = $args['uid'];
+    if(pnUserLoggedIn()) {
+        if (!isset($args['uid']) || empty($args['uid'])) {
+            $uid = pnUserGetVar('uid');
+        } else {
+            $uid = $args['uid'];
+        }
+        
+        $item = pnModAPIFunc('gmap', 'user', 'get', array('uid' => $uid));
+        return (!empty($item['lat']) && !empty($item['long']));
     }
-    
-    $item = pnModAPIFunc('gmap', 'user', 'get', array('uid' => $uid));
-    return (!empty($item['lat']) && !empty($item['long']));
+    return false;
 }
 
 function gmap_userapi_update($args)

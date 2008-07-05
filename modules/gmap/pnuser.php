@@ -19,13 +19,12 @@ function gmap_user_main()
         return LogUtil::registerPermissionError();
     }
 
-    $modvars = pnModGetVar('gmap');
-
-    if (!isset($modvars['googlekey']) || empty($modvars['googlekey'])) {
+    $googlekey = pnModGetVar('gmap', 'googlekey', '');
+    if (empty($googlekey)) {
         return LogUtil::registerError(_GM_NOGOOGLEKEYINSTALLED);
     }
 
-    $pnRender = pnRender::getInstance('gmap', false);
+    $pnRender = pnRender::getInstance('gmap', false, null, true);
     $pnRender->force_compile = true;
 
     $markers  = array();
@@ -34,8 +33,9 @@ function gmap_user_main()
     $canaddmarker  = SecurityUtil::checkPermission('gmap::marker' , '::', ACCESS_COMMENT);
     $canaddspecial = SecurityUtil::checkPermission('gmap::special', '::', ACCESS_COMMENT);
 
+    PageUtil::addVar('javascript', 'javascript/ajax/prototype.js');
     PageUtil::addVar('rawtext', '<style type="text/css"> v\:* { behavior:url(#default#VML); } </style>');
-    PageUtil::addVar('rawtext', '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=' . DataUtil::formatForDisplay($modvars['googlekey']) . '" type="text/javascript"></script>');
+    PageUtil::addVar('rawtext', '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;hl=' . DataUtil::formatForDisplay(_GM_LANGCODE) . '&amp;key=' . DataUtil::formatForDisplay($googlekey) . '" type="text/javascript"></script>');
 
     $markers  = pnModAPIFunc('gmap', 'user', 'getall');
     $specials = pnModAPIFunc('gmap', 'user', 'getall', array('special' => true));
@@ -46,7 +46,7 @@ function gmap_user_main()
         asort($filelist);
         foreach($filelist as $file) {
             $dfile = DataUtil::formatForDisplay($file);
-            $icons .= '<option label="'.$dfile.'" value="'.$dfile.'">'.$dfile.'</option>';
+            $icons .= '<option label="'.$dfile.'" value="'.$dfile.'">'.$dfile.'<\/option>';
         }
         $pnRender->assign('icons', $icons);
     }
@@ -56,7 +56,6 @@ function gmap_user_main()
     $pnRender->assign('specials', $specials);
     $pnRender->assign('canaddmarker',   $canaddmarker);
     $pnRender->assign('canaddspecial',  $canaddspecial);
-    $pnRender->assign('modvars',  $modvars);
 
     return $pnRender->fetch('gmap_user_main.html');
 

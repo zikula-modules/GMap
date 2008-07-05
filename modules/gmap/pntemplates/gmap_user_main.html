@@ -3,8 +3,7 @@
 <!--[pngetstatusmsg]-->
 <div class="gmap">
 
-
-    <div style="margin:auto; margin-bottom:25px;">
+    <p>
     <!--[if $ismapped]-->
       <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_MODIFYCOORDS']-->"><!--[pnml name='_GM_MODIFYCOORDS']--></a>
     <!--[else]-->
@@ -12,23 +11,21 @@
         <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_ADDYOURCOORDS']-->"><!--[pnml name='_GM_ADDYOURCOORDS']--></a>
       <!--[/if]-->
     <!--[/if]-->
-    </div>
+    </p>
   
     <!--[**********************************************************************************]-->
-    <!--[* Zikula gmap javascript has been moved in its own template...              *]-->
+    <!--[* Zikula gmap javascript has been moved in its own template...                   *]-->
     <!--[* If you plan to overide this template (for a Xanthia theme for example), don't  *]-->
     <!--[* forget to also copy the mapjs template to the same location...                 *]-->
     <!--[**********************************************************************************]-->
     <!--[include file='gmap_user_mapjs.html']-->
   
-    <div id="mapcontainer" style="margin:auto; width:950px;">
-      <div id="map" style="margin:auto; width:<!--[$modvars.mapwidth]-->px; height:<!--[$modvars.mapheight]-->px; float:left;"></div>
-      <!--[*if $modvars.showuserlist*]-->
-      <div id="mapsidebar" style="float:right; width:<!--[math equation='x - y' x=945 y=$modvars.mapwidth]-->px; text-align:left;"></div>
+    <div class="gmfloatbox">
+      <div id="map" style="width:<!--[$pncore.gmap.mapwidth|pnvarprepfordisplay]-->px; height:<!--[$pncore.gmap.mapheight|pnvarprepfordisplay]-->px;"></div>
+      <!--[*if $pncore.gmap.showuserlist*]-->
+      <div id="mapsidebar">&nbsp;</div>
       <!--[*/if*]-->
-      <div style="clear:both; width:100%;"></div>
-      <div id="message" style="text-align:left;"></div>
-      <div style="clear:both;"><br /><br /></div>
-  
     </div>
+    <div id="gmessage">&nbsp;</div>
+  
 </div>
