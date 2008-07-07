@@ -16,11 +16,11 @@
     var usershown    = true;
     var specialshown = true;
     var map;
+    // general setting for widhth of infowindow
+    var infowidth = 200;
 
     function mymapclick(i) {
-        opts = new Object();
-        opts.maxWidth = 200;
-        allusers[i].openInfoWindowHtml(htmls[i], opts);
+        allusers[i].openInfoWindowHtml(htmls[i], { maxWidth: infowidth });
     }
     
     function showhideusers() 
@@ -75,9 +75,7 @@
         content += '<\/div><\/form>';
         marker = createMarker(point,'marker_point.png','<!--[$pncore.user.uname]-->',content)
         map.addOverlay(marker);
-        opts = new Object();
-        opts.maxWidth = 200;
-        marker.openInfoWindowHtml(content, opts);
+        marker.openInfoWindowHtml(content, { maxWidth: infowidth });
     }
     
     <!--[if $canaddspecial]-->
@@ -97,9 +95,7 @@
         content += '<input type="submit" value="<!--[pnml name="_GM_SAVEMARKER"]-->" /><\/form>';
         marker = createSpecialMarker(point,'mm_20_orange.png','Test','test<br />'+content+'<div style="text-align:center; white-space:nowrap;"><br /><a title="<!--[pnml name='_GM_ZOOMIN']-->" href="javascript:void(0)" onclick="myZoom(' + center.y + ',' + center.x + ', 2)"><strong><!--[pnml name='_GM_ZOOMIN']--><\/strong><\/a> | <a title="<!--[pnml name='_GM_ZOOMOUT']-->" href="javascript:void(0)" onclick="myZoom(' + center.y + ',' + center.x + ', -2)"><strong><!--[pnml name='_GM_ZOOMOUT']--><\/strong><\/a><\/div>')
         map.addOverlay(marker);
-        opts = new Object();
-        opts.maxWidth = 200;
-        marker.openInfoWindowHtml(content,opts);
+        marker.openInfoWindowHtml(content,{ maxWidth: infowidth });
     }
 
     <!--[/if]-->
@@ -175,11 +171,7 @@
         icon.infoWindowAnchor = new GPoint(9, 2);
         icon.infoShadowAnchor = new GPoint(18, 25);
         marker = new GMarker(point, icon);
-        
-        opts = new Object();
-        opts.maxWidth = 200;
-        marker.bindInfoWindowHtml(html,opts);
-        
+        marker.bindInfoWindowHtml(html,{ maxWidth: infowidth });
         map.addOverlay(marker);
         allusers[num] = marker;
         htmls[num] = html;
@@ -199,11 +191,7 @@
         icon.iconAnchor = new GPoint(6, 20);
         icon.infoWindowAnchor = new GPoint(5, 1);
         marker = new GMarker(point, icon);
-
-        opts = new Object();
-        opts.maxWidth = 200;
-        marker.bindInfoWindowHtml(html,opts);
-        
+        marker.bindInfoWindowHtml(html,{ maxWidth: infowidth });
         map.addOverlay(marker);
         allspecials[num] = marker;
         return marker;
