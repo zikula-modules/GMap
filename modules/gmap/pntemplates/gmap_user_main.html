@@ -1,18 +1,8 @@
 <!--[* $Id$ *]-->
-<h2><!--[pnml name='_GM_TITLE']--></h2>
+<h2 id="maptitle"><!--[$pncore.gmap.initialtitle|pnvarprepfordisplay]--></h2>
 <!--[pngetstatusmsg]-->
 <div class="gmap">
-
-    <p>
-    <!--[if $ismapped]-->
-      <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_MODIFYCOORDS']-->"><!--[pnml name='_GM_MODIFYCOORDS']--></a>
-    <!--[else]-->
-      <!--[if $canaddmarker]-->
-        <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_ADDYOURCOORDS']-->"><!--[pnml name='_GM_ADDYOURCOORDS']--></a>
-      <!--[/if]-->
-    <!--[/if]-->
-    </p>
-  
+ 
     <!--[**********************************************************************************]-->
     <!--[* Zikula gmap javascript has been moved in its own template...                   *]-->
     <!--[* If you plan to overide this template (for a Xanthia theme for example), don't  *]-->
@@ -21,11 +11,112 @@
     <!--[include file='gmap_user_mapjs.html']-->
   
     <div class="gmfloatbox">
-      <div id="map" style="width:<!--[$pncore.gmap.mapwidth|pnvarprepfordisplay]-->px; height:<!--[$pncore.gmap.mapheight|pnvarprepfordisplay]-->px;"></div>
-      <!--[*if $pncore.gmap.showuserlist*]-->
-      <div id="mapsidebar">&nbsp;</div>
-      <!--[*/if*]-->
-    </div>
-    <div id="gmessage">&nbsp;</div>
-  
+      <div id="map" style="float:left; width:<!--[$pncore.gmap.mapwidth|pnvarprepfordisplay]-->px; height:<!--[$pncore.gmap.mapheight|pnvarprepfordisplay]-->px;"></div>
+
+      <div id="sidebar" style="width:<!--[$pncore.gmap.sidebarwidth|pnvarprepfordisplay]-->px;" >
+       <!--[math equation='x - y' y=20 x=$pncore.gmap.sidebarwidth|pnvarprepfordisplay assign=listwidth]-->
+       <!--[if $pncore.gmap.showuserlist]-->
+        <!--[if $canaddmarker]-->       
+          <div id="usermarker">
+            <!--[if $ismapped]-->
+              <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_MODIFYCOORDS']-->"><!--[pnml name='_GM_MODIFYCOORDS']--></a>
+            <!--[else]-->    
+              <a href="<!--[pnmodurl modname='gmap' func='edit']-->" title="<!--[pnml name='_GM_ADDYOURCOORDS']-->"><!--[pnml name='_GM_ADDYOURCOORDS']--></a>
+            <!--[/if]-->
+          </div >
+        <!--[/if]-->
+        <div id="markerheadbar"  style="overflow:auto; text-align:left; width: <!--[$listwidth]-->px; ">&nbsp;</div>
+        <div id="markersidebar"  style="overflow:auto; text-align:left; width: <!--[$listwidth]-->px; height: <!--[$pncore.gmap.listheightuser|pnvarprepfordisplay]-->px; ">&nbsp;</div>
+       <!--[/if]-->
+       <!--[if $pncore.gmap.showspecialslist]-->      
+        <div id="specialheadbar" style="overflow:auto; text-align:left; width: <!--[$listwidth]-->px; ">&nbsp;</div>
+        <div id="specialsidebar" style="overflow:auto; text-align:left; width: <!--[$listwidth]-->px; height:<!--[$pncore.gmap.listheightspecials|pnvarprepfordisplay]-->px; ">&nbsp;</div>
+       <!--[/if]-->
+      </div>
+    </div>  
+      <div id="gmessage">&nbsp;</div>
+
+      <div id="legendcontainer" style="margin:auto">
+      <form name="legend" action="">
+      <!--[if $pncore.gmap.legendmarkershow]-->      
+          <!--[* $numCols is the number of columns *]-->
+          <!--[assign var="numCols" value=$pncore.gmap.legendmarkercolumns]-->
+          <table id="legendtablemarker" >
+              <tr>
+              <!--[assign var="col" value="0"]-->
+              <!--[foreach item=iconinfo key=icon from=$pncore.gmap.markerpinlist]-->
+                  <!--[if $iconinfo.active == "1"]-->		
+                      <!--[if $col == $numCols]-->
+                          </tr>
+	                  <tr><!--[assign var="col" value="0"]-->
+                      <!--[/if]-->
+                      <td><img src="modules/gmap/pnimages/<!--[$icon|pnvarprepfordisplay]-->"   width="12" height="20" title="" alt="" /><input type="checkbox" name="legendmarkerlist" id="<!--[$icon|pnvarprepfordisplay]-->"   onclick="showhidemarkers('marker','<!--[$icon|pnvarprepfordisplay]-->')"   checked="checked" /><!--[$iconinfo.name|pnvarprepfordisplay]--></td>
+                      <!--[assign var="col" value="`$col+1`"]-->
+                  <!--[/if]-->
+               <!--[/foreach]-->
+               <!--[assign var="remainder" value="`$numCols-$col`"]-->
+               <!--[section name=emptyElement loop=$remainder]-->
+                   <td>&nbsp;</td>
+               <!--[/section]-->
+               </tr>
+          </table>
+      <!--[/if]-->      
+      <!--[if $pncore.gmap.legendspecialshow]-->
+	  <!--[counter name=rowcount assign=legendrowcount]-->
+          <!--[* $numCols is the number of columns *]-->
+          <!--[assign var="numCols" value=$pncore.gmap.legendspecialcolumns]-->
+          <table id="legendtablespecial" >
+	  <tbody>
+              <tr id="legendrow_<!--[$legendrowcount]-->">
+	      <!--[counter name=rowcount ]-->
+              <!--[assign var="col" value="0"]-->
+	      <!--[*Cells to show*]-->
+              <!--[foreach item=iconinfo key=icon from=$pncore.gmap.specialpinlist]-->
+                  <!--[if $iconinfo.active == "1"]-->		
+                      <!--[if $col == $numCols]-->
+                          </tr>
+	                  <tr id="legendrow_<!--[$legendrowcount]-->">
+			  <!--[counter name=rowcount ]-->
+			  <!--[assign var="col" value="0"]-->
+                      <!--[/if]-->
+                      <td id="cell_<!--[$icon|pnvarprepfordisplay]-->"><img src="modules/gmap/pnimages/small/<!--[$icon|pnvarprepfordisplay]-->"   width="12" height="20" title="" alt="" /><input type="checkbox" name="legendspeciallist[]" id="<!--[$icon|pnvarprepfordisplay]-->"   onclick="showhidemarkers('special','<!--[$icon|pnvarprepfordisplay]-->')"   checked="checked" /><span id="legend_<!--[$icon|pnvarprepfordisplay]-->"><!--[$iconinfo.name|pnvarprepfordisplay]--></span></td>
+                      <!--[assign var="col" value="`$col+1`"]-->
+                  <!--[/if]-->
+               <!--[/foreach]-->
+              
+	      <!--[*Cells to hide*]-->
+              <!--[foreach item=iconinfo key=icon from=$pncore.gmap.specialpinlist]-->
+                  <!--[if $iconinfo.active != "1"]-->
+                      <!--[if $col == $numCols]-->
+                          </tr>
+	                  <tr id="legendrow_<!--[$legendrowcount]-->">
+			  <!--[counter name=rowcount ]-->
+			  <!--[assign var="col" value="0"]-->
+                      <!--[/if]-->
+                      <td id="cell_<!--[$icon|pnvarprepfordisplay]-->" style="display:none;"><img src="modules/gmap/pnimages/small/<!--[$icon|pnvarprepfordisplay]-->"   width="12" height="20" title="" alt="" /><input type="checkbox" name="legendspeciallist[]" id="<!--[$icon|pnvarprepfordisplay]-->"   onclick="showhidemarkers('special','<!--[$icon|pnvarprepfordisplay]-->')"   checked="checked" /><span id="legend_<!--[$icon|pnvarprepfordisplay]-->"><!--[$iconinfo.name|pnvarprepfordisplay]--></span></td>
+                      <!--[assign var="col" value="`$col+1`"]-->
+                  <!--[/if]-->
+               <!--[/foreach]-->
+               <!--[assign var="remainder" value="`$numCols-$col`"]-->
+	       
+	       <!--[*Fill out the rest of the last row in the table *]-->
+               <!--[section name=emptyElement loop=$remainder]--> 
+                   <td>&nbsp;</td>
+               <!--[/section]-->
+               </tr>
+	  </tbody>
+          </table>
+      <!--[/if]-->	  
+      </form>
+      </div>
+
+      <!--[* Fixes Ticket #2 *]-->
+      <!--[if $pncore.gmap.showsearch]-->      
+      <form action="#" onsubmit="showAddress(this.address.value); return false">
+          <p> <!--[pnml name='_GM_SEARCH']-->
+              <input type="text" size="60" name="address" value="" />
+              <input type="submit" value="<!--[pnml name='_GM_SEARCHGO']-->" />
+          </p>
+      </form>
+      <!--[/if]-->
 </div>

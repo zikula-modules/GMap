@@ -1,0 +1,22 @@
+<!--[*  $Id$  *]-->
+<!--[include file="gmap_admin_menu.html"]-->
+
+<form class="pn-adminform" action="<!--[pnmodurl modname="gmap" type="admin" func="readpins"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+	<input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="gmap"]-->" />
+	<h2><!--[pnml name="_GM_ADMIN_TITLE_READPINSFROMFILESYSTEM"]--></h2>
+	<p><!--[pnml name="_GM_ADMIN_LABEL_READFROMFILESYSTEM"]--></p>
+	<p><strong>modules/gmap/pnimages/specials/</strong></p>
+	<p><strong>modules/gmap/pnimages/</strong></p>
+	<p><!--[pnml name="_GM_ADMIN_CONFIRM_READFROMFILESYSTEM" ]--></p>
+	<div class="pn-adminformrow">
+		<label for="forcereload"><!--[ pnml name='_GM_FORCERELOAD' ]--></label>
+	        <input name="forcereload" id="forcereload" type="checkbox" value="1" />
+	</div>
+	<div class="pn-adminformrow pn-adminformbuttons">
+		<input name="submit" type="submit" value="<!--[pnml name="_GM_ADMIN_BTN_SUBMIT"]-->" />
+	</div>
+</div>
+</form>	
+
+<!--[include file="gmap_admin_footer.html"]-->

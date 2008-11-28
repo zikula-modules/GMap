@@ -14,19 +14,37 @@ function gmap_init()
         return LogUtil::registerError(_GM_DBCREATETABLEERROR);
     }
 
-    pnModSetVar('gmap', 'googlekey',         '');
-    pnModSetVar('gmap', 'Initiallat',        48.859294);
-    pnModSetVar('gmap', 'initiallong',       2.343521);
-    pnModSetVar('gmap', 'mapheight',         500);
-    pnModSetVar('gmap', 'mapwidth',          700);
-    pnModSetVar('gmap', 'initialzoomlevel',  5);
-    pnModSetVar('gmap', 'initialmaptype',    'G_HYBRID_MAP');
-    pnModSetVar('gmap', 'showuserlist',      0);
-    pnModSetVar('gmap', 'showusersonline',   0);
-    pnModSetVar('gmap', 'modulestylesheet',  'googlemap.css');
-
+    pnModSetVar('gmap', 'googlekey',            '');
+    pnModSetVar('gmap', 'initiallat',           48.859294);
+    pnModSetVar('gmap', 'initiallong',          2.343521);
+    pnModSetVar('gmap', 'mapheight',            500);
+    pnModSetVar('gmap', 'mapwidth',             700);
+    pnModSetVar('gmap', 'initialzoomlevel',     5);
+    pnModSetVar('gmap', 'initialmaptype',       'G_HYBRID_MAP');
+    pnModSetVar('gmap', 'showuserlist',         0);
+    pnModSetVar('gmap', 'showusersonline',      0);
+    pnModSetVar('gmap', 'modulestylesheet',     'googlemap.css');
+    pnModSetVar('gmap', 'initialtitle',         'GMap');
+    pnModSetVar('gmap', 'sidebarwidth',         215);
+    pnModSetVar('gmap', 'listheightuser',       100);
+    pnModSetVar('gmap', 'showspecialslist',     0);
+    pnModSetVar('gmap', 'listheightspecials',   400);
+    pnModSetVar('gmap', 'legendmarkershow',     0);
+    pnModSetVar('gmap', 'legendmarkercolumns',  4);
+    pnModSetVar('gmap', 'legendspecialshow',    0);
+    pnModSetVar('gmap', 'legendspecialcolumns', 4);
+    pnModSetVar('gmap', 'gmapfile',             '');       // Closes Ticket #4
+    pnModSetVar('gmap', 'showsearch',           0);        // Closes Ticket #2
+    
+    // Set specialpinlist and markerpinlist
+    pnModAPILoad('gmap', 'admin', true);    
+    pnModAPIFunc('gmap', 'admin', 'updatepins', array('forcereload' => true)); // May not be enabled to call yet.
     return true;
 }
+
+
+
+
 
 function gmap_upgrade($oldversion)
 {
@@ -41,6 +59,22 @@ function gmap_upgrade($oldversion)
                 pnModSetVar('gmap', $varname, $oldvar);
             }
             pnModDelVar('GoogleMap');
+        case 2.1:
+            pnModSetVar('gmap', 'initialtitle',         'GMap');
+            pnModSetVar('gmap', 'sidebarwidth',         215);
+            pnModSetVar('gmap', 'listheightuser',       100);
+            pnModSetVar('gmap', 'showspecialslist',     0);
+            pnModSetVar('gmap', 'listheightspecials',   400);
+            pnModSetVar('gmap', 'legendmarkershow',     0);
+            pnModSetVar('gmap', 'legendmarkercolumns',  4);
+            pnModSetVar('gmap', 'legendspecialshow',    0);
+            pnModSetVar('gmap', 'legendspecialcolumns', 4);
+            pnModSetVar('gmap', 'gmapfile',             '');       // Closes Ticket #4
+            pnModSetVar('gmap', 'showsearch',           0);        // Closes Ticket #2
+            
+            // Set specialpinlist and markerpinlist
+            pnModAPILoad('gmap', 'admin', true);
+            pnModAPIFunc('gmap', 'admin', 'updatepins', array('forcereload' => false));
             break;
     }
 

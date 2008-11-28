@@ -6,6 +6,8 @@
  * @link http://www.zikula.org
  * @version $Id$
  * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
+ *
+ * @version $Id:$
  */
 
 /**
@@ -37,25 +39,20 @@ function gmap_user_main()
     PageUtil::addVar('rawtext', '<style type="text/css"> v\:* { behavior:url(#default#VML); } </style>');
     PageUtil::addVar('rawtext', '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;hl=' . DataUtil::formatForDisplay(_GM_LANGCODE) . '&amp;key=' . DataUtil::formatForDisplay($googlekey) . '" type="text/javascript"></script>');
 
-    $markers  = pnModAPIFunc('gmap', 'user', 'getall');
-    $specials = pnModAPIFunc('gmap', 'user', 'getall', array('special' => true));
-
-    if ($canaddspecial == true) {
-        Loader::loadClass('FileUtil');
-        $filelist = FileUtil::getFiles('modules/gmap/pnimages/specials', false, true, 'png', false);
-        asort($filelist);
-        foreach($filelist as $file) {
-            $dfile = DataUtil::formatForDisplay($file);
-            $icons .= '<option label="'.$dfile.'" value="'.$dfile.'">'.$dfile.'<\/option>';
-        }
-        $pnRender->assign('icons', $icons);
+    $markers        = pnModAPIFunc('gmap', 'user', 'getall');
+    $specials       = pnModAPIFunc('gmap', 'user', 'getall', array('special' => true));
+    
+    $gmapfile = pnModGetVar('gmap', 'gmapfile');
+    if (!file_exists($gmapfile) ) {
+        $gmapfile = "";
     }
 
-    $pnRender->assign('ismapped', pnModAPIFunc('gmap', 'user', 'ismapped'));
-    $pnRender->assign('markers',  $markers);
-    $pnRender->assign('specials', $specials);
-    $pnRender->assign('canaddmarker',   $canaddmarker);
-    $pnRender->assign('canaddspecial',  $canaddspecial);
+    $pnRender->assign('ismapped',      pnModAPIFunc('gmap', 'user', 'ismapped'));
+    $pnRender->assign('markers',       $markers);
+    $pnRender->assign('specials',      $specials);
+    $pnRender->assign('canaddmarker',  $canaddmarker);
+    $pnRender->assign('canaddspecial', $canaddspecial);
+    $pnRender->assign('gmapfile',      $gmapfile);
 
     return $pnRender->fetch('gmap_user_main.html');
 
@@ -73,13 +70,12 @@ function gmap_user_edit()
 
     $item = pnModAPIFunc('gmap', 'user', 'get', array('uid' => pnUserGetVar('uid')));
 
-    Loader::loadClass('FileUtil');
-    $files = FileUtil::getFiles('modules/gmap/pnimages/', false, true, 'png', false);
-    foreach($files as $file) {
-        if (ereg('mm_20_', $file) || ereg('marker_', $file)) {
-            $icons[$file] = $file;
+    $iconlist = pnModGetVar('gmap','markerpinlist');
+    $icons    = array();
+    foreach ($iconlist as $icon => $iconinfo) {
+        if ( $iconinfo['active'] != 0 ) {
+            $icons[$icon] = $iconinfo['name'];
         }
-    
     }
 
     PageUtil::addVar('javascript', 'javascript/ajax/prototype.js');

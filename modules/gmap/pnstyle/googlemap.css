@@ -38,15 +38,51 @@
     float: left;
 }
 
-#mapsidebar {
-    float: left;
-    margin-left: 2em;
+#sidebar {
+    float: right;
+    margin-left: 1em;
 }
 
-#mapsidebar ul {
+#markerheadbar {
+    margin-left: 1em;
+}
+
+#markerheadbar ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+#markersidebar {
+    margin-left: 1em;
+    list-style-type: none;
+}
+
+#markersidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: disc;
+}
+
+#specialheadbar {
+    margin-left: 1em;
+}
+
+#specialheadbar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+
+#specialsidebar {
+    margin-left: 1em;
+}
+
+#specialsidebar ul {
+    margin:  1em;
+    padding: 0em;	
+    list-style-type: disc;	
 }
 
 /*

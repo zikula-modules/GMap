@@ -8,14 +8,59 @@
  */
 
 
-GOOGLEMAP Zikula MODULE
+GMAP Zikula MODULE
 -------------------------
 
 - Upload to you Zikula modules folder
 - Go to your Modules administration
-- Initialize, activate the GoogleMap module.
+- Initialize, activate the GMap module.
+- Go to GMap administration
 
-- In the GMap administration, fill in your Google API Key
-  (http://www.google.com/apis/maps/)
+There are four administration areas:
+
+MAP SETTINGS
+  "Map Display"
+  - Fill in your Google API Key (see http://www.google.com/apis/maps/)
+    NOTE: this must be done for a map to be displayed
+  - Add your values for your default Google Map (Latitude, Longitude, Map Type, Zoom Level, and size)
+  - If you would like to load map information from a file, give a filename to load.
+    For an example, you can load "modules/gmap/pndocs/Example.xml"
+    Also see this file for an example on how you can create other map files.  These files can update the
+    map title, location, zoom level and the pin labels.  Values in the file will over ride default values set in
+    the gmap administration.
+
+  "Side Bar Display"
+  - Set the width of the side bar.  Note: the width of the map and the width of the side bar must be able
+    to fit side by side on the page for this to look right.
+  - If you want User Markers in the side bar, then enable and set the maximum height of the list
+  - If you want Special Markers in the side bar, then enable and set the maximum height of the list
+  - If more items are on the list than can be displayed in the maximum height, scroll bars will be used.
+
+  "Marker Legend Display"
+  The marker legend allows you to show labels for the colored markers on the map.  
+  For example, the "marker_purple.png" marker can have a label of "Home Location".
+  These values are set under "Marker Settings" below.
+  When shown, the Legend will show an image of the marker, the marker label, and a check box to toggle the 
+  visibility of the markers on the map and side bar.
+  - To show the User Marker legend at the bottom of the map, enable it and give the number or columns for the table.
+  - To show the User Marker legend at the bottom of the map, enable it and give the number or columns for the table.  
+  - To show an Address search form at the bottom of the map, enable it.  This will allow your people to type in
+    and address and have the map re-centered on the new location.
+    
+MARKER SETTINGS
+- In the GMap administration, go to "Marker Settings"
+  This area has two sections.  One for Special Markers and one for User Markers.
+  In each section, enable those markers which you want to be made available and visible on your map.
+  Also give the Name for the marker which will be used in the Marker Legend (above) as well as any drop down
+  marker selections in forms.  Only those markers that are enabled will be shown.
+  Note: Reading a map from a file can overide these settings.
   
-(28-04-2006)
+SCAN FOR NEW MARKER IMAGE FILES
+ This section is used if you add any new icons or want to reset to the initial configuration.
+ Submitting will scan the directories shown for new icons and add any that are not already used (keeping data
+ for those that already exist.)
+ The "Force reload" will overwrite existing data with the data from the directories.  All marker names will be 
+ reset to the default values.
+
+EDIT MARKERS
+ This section allows you to edit markers that have been saved in the database.

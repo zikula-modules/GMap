@@ -32,9 +32,11 @@ class gmap_admin_modifyconfighandler
         for ($x = 0; $x < 20; $x++) {
             $zoomlevels[] = array('text' => $x, 'value' => $x);
         }
+        $basedirectory = dirname(dirname(dirname(dirname(realpath(__FILE__))))) . "/";
 
-        $pnRender->assign('maptypes', $maptypes);
-        $pnRender->assign('zoomlevels', $zoomlevels);
+        $pnRender->assign('maptypes',      $maptypes);
+        $pnRender->assign('zoomlevels',    $zoomlevels);
+        $pnRender->assign('basedirectory', $basedirectory);
 
         return true;
     }
@@ -68,14 +70,25 @@ class gmap_admin_modifyconfighandler
                 return false;
             }
             
-            pnModSetVar('gmap', 'googlekey',        $data['googlekey']);
-            pnModSetVar('gmap', 'initiallat',       $data['initiallat']);
-            pnModSetVar('gmap', 'initiallong',      $data['initiallong']);
-            pnModSetVar('gmap', 'mapheight',        $data['mapheight']);
-            pnModSetVar('gmap', 'mapwidth',         $data['mapwidth']);
-            pnModSetVar('gmap', 'initialzoomlevel', $data['initialzoomlevel']);
-            pnModSetVar('gmap', 'initialmaptype',   $data['initialmaptype']);
-            pnModSetVar('gmap', 'showuserlist',     $data['showuserlist']);
+            pnModSetVar('gmap', 'googlekey',            $data['googlekey']);
+            pnModSetVar('gmap', 'initialtitle',         $data['initialtitle']);            
+            pnModSetVar('gmap', 'initiallat',           $data['initiallat']);
+            pnModSetVar('gmap', 'initiallong',          $data['initiallong']);
+            pnModSetVar('gmap', 'mapheight',            $data['mapheight']);
+            pnModSetVar('gmap', 'mapwidth',             $data['mapwidth']);
+            pnModSetVar('gmap', 'initialzoomlevel',     $data['initialzoomlevel']);
+            pnModSetVar('gmap', 'initialmaptype',       $data['initialmaptype']);
+            pnModSetVar('gmap', 'showuserlist',         $data['showuserlist']);
+            pnModSetVar('gmap', 'sidebarwidth',         $data['sidebarwidth']);
+            pnModSetVar('gmap', 'listheightuser',       $data['listheightuser']);
+            pnModSetVar('gmap', 'showspecialslist',     $data['showspecialslist']);
+            pnModSetVar('gmap', 'listheightspecials',   $data['listheightspecials']);
+            pnModSetVar('gmap', 'legendmarkershow',     $data['legendmarkershow']);
+            pnModSetVar('gmap', 'legendmarkercolumns',  $data['legendmarkercolumns']);           
+            pnModSetVar('gmap', 'legendspecialshow',    $data['legendspecialshow']);
+            pnModSetVar('gmap', 'legendspecialcolumns', $data['legendspecialcolumns']);
+            pnModSetVar('gmap', 'gmapfile',             $data['gmapfile']);       // Closes Ticket #4
+            pnModSetVar('gmap', 'showsearch',           $data['showsearch']);     // Closes Ticket #2       
         }
         return true;
     }

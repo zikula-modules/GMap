@@ -1,5 +1,4 @@
 <!--[* $Id$ *]-->
-
 <noscript>
     <p><!--[pnml name='_GM_NOSCRIPTWARNING']--></p>
 </noscript>
@@ -9,42 +8,128 @@
     setTimeout("ShowGoogleMap()", 100);
     window.unonload = "GUnload()";
 
-    var sidebar_html = '<ul>';
-    var htmls = new Array();
-    var allusers     = new Array();
-    var allspecials  = new Array();
-    var usershown    = true;
-    var specialshown = true;
-    var map;
-    // general setting for widhth of infowindow
-    var infowidth = 200;
+    var map                 = null; // Google Maps map holder
+    var geocoder            = null; // Google Maps geocoder holder
+    var NewMarker           = null; // Google Maps marker holder
+    var infowidth           = 300;  // width of info popup window
 
-    function mymapclick(i) {
-        allusers[i].openInfoWindowHtml(htmls[i], { maxWidth: infowidth });
-    }
+    // The two different marker types
+    var markerinfo          = new markertype('marker',  'modules/gmap/pnimages/',          'shadow50.png',      20, 34);
+    var specialinfo         = new markertype('special', 'modules/gmap/pnimages/specials/', 'mm_20_shadow.png',  12, 20);
+
+    // Set icon information
+    <!--[foreach key='icon' item='pin' from=$pncore.gmap.specialpinlist]-->
+    specialinfo.icons[cleanname('<!--[$icon|pnvarprepfordisplay]-->')] = new icontype('<!--[$icon|pnvarprepfordisplay]-->', '<!--[$pin.name|pnvarprepfordisplay|replace:"'":"\'"]-->', '<!--[$pin.active|pnvarprepfordisplay]-->');
+    <!--[/foreach]-->
     
-    function showhideusers() 
-    {
-        if (usershown == true) {
-            allusers.each(function(m) { map.addOverlay(m); });
-        } else {
-            allusers.each(function(m) { map.removeOverlay(m); });
-        }
-        usershown = !usershown;
-    }
-    
-    function showhidespecials() 
-    {
-        if (specialshown == true) {
-            allspecials.each(function(m) { map.addOverlay(m); });
-        } else {
-            allspecials.each(function(m) { map.removeOverlay(m); });
-        }
-        specialshown = !specialshown;
+    <!--[foreach key='icon' item='pin' from=$pncore.gmap.markerpinlist]-->
+    markerinfo.icons[cleanname('<!--[$icon|pnvarprepfordisplay]-->')] = new icontype('<!--[$icon|pnvarprepfordisplay]-->', '<!--[$pin.name|pnvarprepfordisplay|replace:"'":"\'"]-->', '<!--[$pin.active|pnvarprepfordisplay]-->');
+    <!--[/foreach]-->
+
+
+    function icontype(file, name, active) {
+        this.file   = file;
+        this.name   = name;
+        this.active = (active != 0) ? true : false;
     }
 
-    function myZoom(lat, lng, level) 
-    {
+    function markertype(type, iconpath, shadowicon, width, height) {
+        this.type              = type;
+        this.showing           = true;
+        this.iconpath          = iconpath;
+        this.shadowicon        = shadowicon;
+        this.IDside            = 'side_' + type + '_'; // ID for Sidebar <li>
+        this.sidebarhead       = "";  // Sidebar Header HTML
+        this.sidebar           = "";  // Sidebar HTML
+        this.list              = [];  // list of markerpin
+        this.icons             = [];  // list of icontype
+        this.iconSizeWidth     = width;
+        this.iconSizeHeight    = height;
+        this.shadowSizeWidth   = width*2;
+        this.shadowSizeHeight  = height;
+        this.iconAnchorX       = Math.floor(width/2);
+        this.iconAnchorY       = height;
+        this.infoWindowAnchorX = Math.floor(width/2);
+        this.infoWindowAnchorY = 1;
+    }
+
+    function markerpin(icon, marker, popup){
+        this.icon    = icon;
+        this.marker  = marker;
+        this.popup   = popup;
+    }
+
+    function cleanname(file){
+        var file = file.replace(/\./g,"_");
+            file = file.replace(/\-/g,"_");
+        return file;
+    }
+
+    function setmarkertype(markertype){
+        if (markertype == markerinfo.type) {
+            return markerinfo;
+        }
+        if (markertype == specialinfo.type){
+            return specialinfo;
+        }
+        return markerinfo; // default
+    }
+
+    function markerclick(markertype, i) {
+        var thismarker = setmarkertype(markertype);
+        thismarker.list[i].marker.openInfoWindowHtml(thismarker.list[i].popup, { maxWidth: infowidth });
+    }
+
+    function showhidemarkers(markertype, markername, show ) { // Fixes Ticket #6
+      var thismarker = setmarkertype(markertype);
+      if (markername === true || markername === false || markername === null) {
+          markername = false;  // no single marker name, do them all
+      }
+      if (show !== true && show !== false) {
+         // if not already set to true or false, set to the oposite of what it is now (toggle)
+         if ( markername ) {
+             show = document.getElementById(markername).checked;
+         } else {
+             show = !thismarker.showing;
+         }
+      }
+      map.closeInfoWindow();
+      var displayvalue = (show) ? 'list-item' : 'none';
+      var checkedvalue = (show) ? true        : false ;
+      for (var y=0;y<thismarker.list.length;y++) {
+          if (!markername || thismarker.list[y].icon == markername)  {
+              // Map marker
+              if (thismarker.list[y].icon != null) {
+                  if (show) {
+                      map.addOverlay(thismarker.list[y].marker);
+                  } else {
+                      map.removeOverlay(thismarker.list[y].marker);
+                  }
+              }
+              // Side Bar
+              if (liElement = document.getElementById(thismarker.IDside + y)){
+                  liElement.style.display = displayvalue;
+              }
+          }
+      }
+      // Set the legend check boxes
+      if (!markername) { 
+          // All the markers
+          for ( var i in thismarker.icons ) {
+              if (liElement = document.getElementById(thismarker.icons[i].file)) {
+                  liElement.checked = checkedvalue;
+              }	    
+          }
+          thismarker.showing = show; // Also, record what is showing for next toggle
+      } else { 
+          // Just one marker
+          if (liElement = document.getElementById(markername)) {
+              liElement.checked = checkedvalue;
+          }
+      }
+    }
+
+    function myZoom(lat, lng, level) {
         myzoom = map.getZoom();
         if (level < 0) {
             if ((myzoom + level) < 0) {
@@ -60,44 +145,138 @@
             }
         }
     }
-    
-    function addnewusermarker() 
-    {
-        center = map.getCenter();
-        point = new GLatLng(center.y,center.x);
-        content  = '<p><!--[$pncore.user.uname]--><\/p><div>';
+
+    function showAddress(address) {   // Fixes Ticket #2
+        if (geocoder) {
+            geocoder.getLatLng( address, function(point) {
+                                             if (!point) {
+                                                 alert(address + " not found");
+                                             } else {
+                                                 map.setCenter(point, 13);
+                                                 var marker = new GMarker(point);
+                                                 map.addOverlay(marker);
+                                                 marker.openInfoWindowHtml(address);
+                                             }
+                                          }
+                             );
+        }
+    }
+
+    <!--[if $canaddmarker ]-->
+    function addnewusermarker() {
+        var center = map.getCenter();
+        var point  = new GLatLng(center.y,center.x);
+        var content  = '<p><strong><!--[$pncore.user.uname]--></strong><\/p><div>';
         content += '<form action="<!--[pnmodurl modname="gmap" type="user" func="update"]-->" method="post" enctype="application/x-www-form-urlencoded">';
-        content += '<input type="hidden" name="uid" value="<!--[pnusergetvar name='uid']-->" />';
-        content += '<input type="text"   name="latitude" size="30" maxlength="100" value="'+center.y+'" />';
-        content += '<input type="text"   name="longitude" size="30" maxlength="100" value="'+center.x+'" />';
-        content += '<input type="text"   name="msg" size="30" maxlength="100" value="<!--[pnml name="_GM_ADDMESSAGE"]-->"><br /><br />';
+        content += '<input type="hidden" name="uid" value="<!--[pnusergetvar name="uid"]-->" />';
+        content += '<input type="text" id="markerlat" name="latitude"  size="20" maxlength="20" value="'+center.y+'" />';
+        content += '<input type="text" id="markerlng" name="longitude" size="20" maxlength="20" value="'+center.x+'" />';
+        content += '<input type="text"                name="msg"       size="30" maxlength="100" value="<!--[pnml name="_GM_ADDMESSAGE"]-->" /><br />';
+        content += '<select id="markerselect" name="icon" onChange="MarkerSelected()">';
+        var firstmarker = null;
+        for ( var i in markerinfo.icons ) {
+            if (markerinfo.icons[i].active ) {
+                content += '<option value="' + markerinfo.icons[i].file + '" >' + markerinfo.icons[i].name + '<\/option>';
+                firstmarker = (firstmarker==null)? markerinfo.icons[i].file : firstmarker;
+            }
+        }
+        content += '<\/select>';
         content += '<input type="submit" value="<!--[pnml name="_GM_SAVEMARKER"]-->" />';
-        content += '<\/div><\/form>';
-        marker = createMarker(point,'marker_point.png','<!--[$pncore.user.uname]-->',content)
-        map.addOverlay(marker);
-        marker.openInfoWindowHtml(content, { maxWidth: infowidth });
+        content += '<br /><br />';
+        content += '<\/form><\/div>';
+
+        var icon = new GIcon(); // Fixes Ticket #1
+        icon.image  = markerinfo.iconpath + firstmarker;
+        icon.shadow = markerinfo.iconpath + markerinfo.shadowicon;
+        icon.iconSize         = new GSize( markerinfo.iconSizeWidth,     markerinfo.iconSizeHeight);
+        icon.shadowSize       = new GSize( markerinfo.shadowSizeWidth,   markerinfo.shadowSizeHeight);
+        icon.iconAnchor       = new GPoint(markerinfo.iconAnchorX,       markerinfo.iconAnchorY);
+        icon.infoWindowAnchor = new GPoint(markerinfo.infoWindowAnchorX, markerinfo.infoWindowAnchorY);
+
+        NewMarker =  new GMarker(point, {icon:icon, draggable: true});
+        NewMarker.bindInfoWindowHtml(content,{ maxWidth: infowidth });
+        NewMarker.enableDragging(); // Fixes Ticket #1
+        map.addOverlay(NewMarker);
+        NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
+
+        GEvent.addListener(NewMarker, "dragend", function() {  // Fixes Ticket #1
+            var place = NewMarker.getPoint();
+            map.panTo(new GLatLng(place.lat(), place.lng()));
+            NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
+            map.addOverlay(NewMarker);	    
+            document.getElementById("markerlat").value = place.lat();
+            document.getElementById("markerlng").value = place.lng ();
+        });
+        GEvent.addListener(NewMarker, "infowindowclose", function() { // Fixes Ticket #1
+              map.removeOverlay(NewMarker);
+        });
     }
     
-    <!--[if $canaddspecial]-->
+    function MarkerSelected() {
+        var myselect = document.getElementById("markerselect");
+        var sIndex   = myselect.selectedIndex;
+        var newicon  = markerinfo.iconpath + myselect.options[sIndex].value;
+        NewMarker.setImage(newicon);
+    }
+    <!--[/if]-->
 
-    function addspecialmarker() 
+    <!--[if $canaddspecial ]-->
+    function addspecialmarker()
     {
-        center = map.getCenter();
-        point = new GLatLng(center.y,center.x);
-        content  = '<form action="<!--[pnmodurl modname="gmap" type="user" func="add"]-->" method="post" enctype="application/x-www-form-urlencoded">';
-        content += '<input type="text"   name="latitude" size="30" maxlength="100" value="'+center.y+'" />';
-        content += '<input type="text"   name="longitude" size="30" maxlength="100" value="'+center.x+'" />';
-        content += '<input type="text"   name="title" size="30" maxlength="100" value="<!--[pnml name='_GM_ADDTITLE']-->" />';
-        content += '<input type="text"   name="msg" size="30" maxlength="100" value="<!--[pnml name='_GM_ADDMESSAGE']-->" />';
-        content += '<select name="icon">';
-        content += '<!--[$icons]-->';
+        var center = map.getCenter();
+        var point  = new GLatLng(center.y,center.x);
+        var content  = '<p><strong></strong><\/p><div>';
+        content += '<form action="<!--[pnmodurl modname="gmap" type="user" func="add"]-->" method="post" enctype="application/x-www-form-urlencoded">';
+        content += '<input type="text" id="markerlat" name="latitude"  size="20" maxlength="20" value="'+center.y+'" />';
+        content += '<input type="text" id="markerlng" name="longitude" size="20" maxlength="20" value="'+center.x+'" />';
+        content += '<input type="text"                name="title"     size="30" maxlength="100" value="<!--[pnml name="_GM_ADDTITLE"]-->" />';
+        content += '<input type="text"                name="msg"       size="30" maxlength="100" value="<!--[pnml name="_GM_ADDMESSAGE"]-->" /><br />';
+        content += '<select id="specialselect" name="icon" onChange="SpecialSelected()">';
+        var firstmarker = null;
+        for ( var i in specialinfo.icons ) {
+            if (specialinfo.icons[i].active ) {
+                content += '<option value="' + specialinfo.icons[i].file + '" >' + specialinfo.icons[i].name + '<\/option>';
+                firstmarker = (firstmarker==null)? specialinfo.icons[i].file : firstmarker;
+            }
+        }
         content += '<\/select>';
-        content += '<input type="submit" value="<!--[pnml name="_GM_SAVEMARKER"]-->" /><\/form>';
-        marker = createSpecialMarker(point,'mm_20_orange.png','Test','test<br />'+content+'<div style="text-align:center; white-space:nowrap;"><br /><a title="<!--[pnml name='_GM_ZOOMIN']-->" href="javascript:void(0)" onclick="myZoom(' + center.y + ',' + center.x + ', 2)"><strong><!--[pnml name='_GM_ZOOMIN']--><\/strong><\/a> | <a title="<!--[pnml name='_GM_ZOOMOUT']-->" href="javascript:void(0)" onclick="myZoom(' + center.y + ',' + center.x + ', -2)"><strong><!--[pnml name='_GM_ZOOMOUT']--><\/strong><\/a><\/div>')
-        map.addOverlay(marker);
-        marker.openInfoWindowHtml(content,{ maxWidth: infowidth });
+        content += '<input type="submit" value="<!--[pnml name="_GM_SAVEMARKER"]-->" />';
+        content += '<br /><br />';
+        content += '<\/form><\/div>';
+
+        var icon = new GIcon(); // Fixes Ticket #1
+        icon.image  = specialinfo.iconpath + firstmarker;
+        icon.shadow = specialinfo.iconpath + specialinfo.shadowicon;
+        icon.iconSize         = new GSize( specialinfo.iconSizeWidth,     specialinfo.iconSizeHeight);
+        icon.shadowSize       = new GSize( specialinfo.shadowSizeWidth,   specialinfo.shadowSizeHeight);
+        icon.iconAnchor       = new GPoint(specialinfo.iconAnchorX,       specialinfo.iconAnchorY);
+        icon.infoWindowAnchor = new GPoint(specialinfo.infoWindowAnchorX, specialinfo.infoWindowAnchorY);
+        
+        NewMarker =  new GMarker(point, {icon:icon, draggable: true});
+        NewMarker.bindInfoWindowHtml(content,{ maxWidth: infowidth });	
+        NewMarker.enableDragging(); // Fixes Ticket #1
+        map.addOverlay(NewMarker);
+        NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
+
+        GEvent.addListener(NewMarker, "dragend", function() {  // Fixes Ticket #1
+            var place = NewMarker.getPoint();
+            map.panTo(new GLatLng(place.lat(), place.lng()));
+            NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
+            map.addOverlay(NewMarker);
+            document.getElementById("markerlat").value = place.lat();
+            document.getElementById("markerlng").value = place.lng ();
+        });
+        GEvent.addListener(NewMarker, "infowindowclose", function() { // Fixes Ticket #1
+              map.removeOverlay(NewMarker);
+        });
     }
 
+    function SpecialSelected() {
+        var myselect = document.getElementById("specialselect");
+        var sIndex   = myselect.selectedIndex;
+        var newicon  = specialinfo.iconpath + myselect.options[sIndex].value;
+        NewMarker.setImage(newicon);
+    }
     <!--[/if]-->
     
     function ShowGoogleMap()
@@ -105,98 +284,204 @@
         if (!GBrowserIsCompatible()) {
             return;
         }
-       
+
         map = new GMap2($("map"));
+        geocoder = new GClientGeocoder();
         GEvent.addListener(map, "moveend", function() {
-          center = map.getCenter();
+          center  = map.getCenter();
           curzoom = map.getZoom();
           $("gmessage").update('(<!--[pnml name="_GM_LATITUDE" ]-->: ' + center.y + ', <!--[pnml name="_GM_LONGITUDE" ]-->: ' + center.x + ', <!--[pnml name="_GM_ZOOMLEVEL" ]-->: ' + curzoom + ')');
         });
+
         map.addControl(new GLargeMapControl());
         map.addControl(new GMapTypeControl());
+        map.addControl(new GOverviewMapControl());
        
         map.setCenter(new GLatLng(<!--[$pncore.gmap.initiallat|pnvarprepfordisplay]-->, <!--[$pncore.gmap.initiallong|pnvarprepfordisplay]-->), <!--[$pncore.gmap.initialzoomlevel|pnvarprepfordisplay]-->);
         map.setMapType(<!--[$pncore.gmap.initialmaptype|pnvarprepfordisplay]-->);
-       
+
         <!--[foreach key='num' item='special' from=$specials]-->
-       
-        point = new GLatLng(<!--[$special.lat|pnvarprepfordisplay]-->,<!--[$special.long|pnvarprepfordisplay]-->);
-        lat = parseFloat(<!--[$special.lat|pnvarprepfordisplay]-->);
-        lng = parseFloat(<!--[$special.long|pnvarprepfordisplay]-->);
-        createSpecialMarker(point, '<!--[$special.icon]-->', '<!--[$special.title|pnvarprepfordisplay]-->',  <!--[$num]-->, '<!--[$special.title|pnvarprepfordisplay]--><br /><!--[$special.msg|pnvarprephtmldisplay|replace:"'":"\'"]--><div style="text-align:center; white-space:nowrap;"><br /><a title="<!--[pnml name='_GM_ZOOMIN']-->" href="javascript:void(0)" onclick="myZoom(' + lat + ',' + lng + ', 2)"><strong><!--[pnml name='_GM_ZOOMIN']--><\/strong><\/a> | <a title="<!--[pnml name='_GM_ZOOMOUT']-->" href="javascript:void(0)" onclick="myZoom(' + lat + ',' + lng + ', -2)"><strong><!--[pnml name='_GM_ZOOMOUT']--><\/strong><\/a><\/div>')
-       
+        <!--[if $pncore.gmap.specialpinlist[$special.icon].active ]-->
+        CreateMarker(specialinfo.type, <!--[$special.lat|pnvarprepfordisplay]-->, <!--[$special.long|pnvarprepfordisplay]-->, '<!--[$special.icon]-->', '<!--[$special.title|pnvarprepfordisplay]-->', '<!--[$special.msg|pnvarprephtmldisplay|replace:"'":"\'"]-->');
+        <!--[/if]-->
         <!--[/foreach]-->
-       
+
         <!--[foreach key='num' item='marker' from=$markers]-->
-        
+        <!--[if $pncore.gmap.markerpinlist[$marker.icon].active ]-->
         <!--[pnusergetvar name='uname' uid=$marker.uid assign='uname']-->
-        point = new GLatLng(<!--[$marker.lat|pnvarprepfordisplay]-->,<!--[$marker.long|pnvarprepfordisplay]-->);
-        lat = parseFloat(<!--[$marker.lat|pnvarprepfordisplay]-->);
-        lng = parseFloat(<!--[$marker.long|pnvarprepfordisplay]-->);
-        createMarker(point, '<!--[$marker.icon]-->', '<!--[$uname]-->', <!--[$num]-->, '<a href="<!--[pnmodurl modname="Profile" type="user" func="view" uname=$uname]-->" title="<!--[$uname]-->"><!--[$uname]--><\/a><br /><!--[$marker.msg|pnvarprephtmldisplay|replace:"'":"\'"]--><div style="text-align:center; white-space:nowrap;"><br /><a title="<!--[pnml name='_GM_ZOOMIN']-->" href="javascript:void(0)" onclick="myZoom(' + lat + ',' + lng + ', 2)"><strong><!--[pnml name='_GM_ZOOMIN']--><\/strong><\/a> | <a title="<!--[pnml name='_GM_ZOOMOUT']-->" href="javascript:void(0)" onclick="myZoom(' + lat + ',' + lng + ', -2)"><strong><!--[pnml name='_GM_ZOOMOUT']--><\/strong><\/a><\/div>')
-       
+        CreateMarker(markerinfo.type, <!--[$marker.lat|pnvarprepfordisplay]-->, <!--[$marker.long|pnvarprepfordisplay]-->, '<!--[$marker.icon]-->', '<!--[$uname|pnvarprepfordisplay]-->', '<!--[$marker.msg|pnvarprephtmldisplay|replace:"'":"\'"]-->');
+        <!--[/if]-->
         <!--[/foreach]-->
-       
-        sidebar_html += '<li>&nbsp;<\/li>';
-        if (allusers.length >= 1) {
-            sidebar_html += '<li><a href="javascript:showhideusers()" title="<!--[pnml name='_GM_SHOWHIDEUSERS']-->"><!--[pnimg src='showhideusers.png' alt='_GM_SHOWHIDEUSERS' altml=true]--><\/a><\/li>';
-        }
-        if (allspecials.length >= 1) {
-            sidebar_html += '<li><a href="javascript:showhidespecials()" title="<!--[pnml name='_GM_SHOWHIDESPECIALS']-->"><!--[pnimg src='showhidespecials.png' alt='_GM_SHOWHIDESPECIALS' altml=true]--><\/a><\/li>';
-        }
-       
-        sidebar_html += '<li>&nbsp;<\/li>';
+
+        <!--[if $gmapfile !="" ]-->
+        GetMarkersFromFile('<!--[$gmapfile|pnvarprepfordisplay]-->'); // Fixes Ticket #4
+        <!--[/if]-->
+
+        markerinfo.sidebarhead  += '<li><a href="javascript:showhidemarkers(\'' + markerinfo.type  + '\')" title="<!--[pnml name="_GM_SHOWHIDEUSERS"]-->"><!--[pnimg src="showhideusers.png" alt="_GM_SHOWHIDEUSERS" altml=true]--><\/a><\/li>';
+        specialinfo.sidebarhead += '<li><a href="javascript:showhidemarkers(\'' + specialinfo.type + '\')" title="<!--[pnml name="_GM_SHOWHIDESPECIALS"]-->"><!--[pnimg src="showhidespecials.png" alt="_GM_SHOWHIDESPECIALS" altml=true]--><\/a><\/li>';
 
         <!--[if $ismapped eq false && $canaddmarker eq true]-->
-        sidebar_html += '<li><a href="javascript:addnewusermarker()" title="<!--[pnml name='_GM_ADDYOURMARKER']-->"><!--[pnimg src='addnewmarker.png' alt='_GM_ADDYOURMARKER' altml=true]--><\/a><\/li>';
+            markerinfo.sidebarhead += '<li><a href="javascript:addnewusermarker()" title="<!--[pnml name="_GM_ADDYOURMARKER"]-->"><!--[pnimg src="addnewmarker.png" alt="_GM_ADDYOURMARKER" altml=true]--><\/a><\/li>';
         <!--[/if]-->
-        
+
         <!--[if $canaddspecial]-->
-        sidebar_html += '<li><a href="javascript:addspecialmarker()" title="<!--[pnml name='_GM_ADDSPECIALMARKER']-->"><!--[pnimg src='addspecialmarker.png' alt='_GM_ADDSPECIALMARKER' altml=true]--><\/a><\/li>';
+            specialinfo.sidebarhead += '<li><a href="javascript:addspecialmarker()" title="<!--[pnml name="_GM_ADDSPECIALMARKER"]-->"><!--[pnimg src="addspecialmarker.png" alt="_GM_ADDSPECIALMARKER" altml=true]--><\/a><\/li>';
         <!--[/if]-->
-        
-        sidebar_html += '<\/ul>';
-       
-        $("mapsidebar").update(sidebar_html);
+
+        <!--[if $pncore.gmap.showuserlist]-->
+        $("markerheadbar").update('<ul>' + markerinfo.sidebarhead + '<\/ul>');
+        $("markersidebar").update('<ul>' + markerinfo.sidebar     + '<\/ul>');
+        <!--[/if]-->
+        <!--[if $pncore.gmap.showspecialslist]-->
+        $("specialheadbar").update('<ul>' + specialinfo.sidebarhead + '<\/ul>');
+        $("specialsidebar").update('<ul>' + specialinfo.sidebar     + '<\/ul>');
+        <!--[/if]-->
     }
 
-    function createMarker(point, pnicon, name, num, html) 
-    {
-        icon = new GIcon();
-        icon.image = "modules/gmap/pnimages/" + pnicon;
-        icon.shadow = "modules/gmap/pnimages/shadow50.png";
-        icon.iconSize = new GSize(20, 34);
-        icon.shadowSize = new GSize(37, 34);
-        icon.iconAnchor = new GPoint(9, 34);
-        icon.infoWindowAnchor = new GPoint(9, 2);
-        icon.infoShadowAnchor = new GPoint(18, 25);
-        marker = new GMarker(point, icon);
+    function CreateMarker(markertype, lat, lng, pnicon, title, desc) {
+        var thismarker = setmarkertype(markertype);
+        var html       = WindowText(title, desc, lat, lng);
+        var icon       = new GIcon();
+        var num        = thismarker.list.length; // add to the end of this list
+        icon.image     = thismarker.iconpath + pnicon;
+        icon.shadow    = thismarker.iconpath + thismarker.shadowicon;
+        icon.iconSize         = new GSize( thismarker.iconSizeWidth,     thismarker.iconSizeHeight);
+        icon.shadowSize       = new GSize( thismarker.shadowSizeWidth,   thismarker.shadowSizeHeight);
+        icon.iconAnchor       = new GPoint(thismarker.iconAnchorX,       thismarker.iconAnchorY);
+        icon.infoWindowAnchor = new GPoint(thismarker.infoWindowAnchorX, thismarker.infoWindowAnchorY);
+        var marker = new GMarker(new GLatLng(lat, lng), icon);
         marker.bindInfoWindowHtml(html,{ maxWidth: infowidth });
         map.addOverlay(marker);
-        allusers[num] = marker;
-        htmls[num] = html;
-        <!--[if $pncore.gmap.showuserlist]-->
-        sidebar_html += '<li><a href="javascript:mymapclick(' + num + ')" title="' + name + '">' + name + '<\/a><\/li>';
-        <!--[/if]-->
+        thismarker.list[num] = new markerpin(pnicon, marker, html);
+        thismarker.sidebar   += '<li id="' + thismarker.IDside + num + '"><a href="javascript:markerclick(\'' + thismarker.type + '\',' + num + ')" title="' + title + '">' + title + '<\/a><\/li>';
         return marker;
     }
-    
-    function createSpecialMarker(point, pnicon, name, num, html) 
-    {
-        icon = new GIcon();
-        icon.image = "modules/gmap/pnimages/specials/" + pnicon;
-        icon.shadow = "modules/gmap/pnimages/small/mm_20_shadow.png";
-        icon.iconSize = new GSize(12, 20);
-        icon.shadowSize = new GSize(22, 20);
-        icon.iconAnchor = new GPoint(6, 20);
-        icon.infoWindowAnchor = new GPoint(5, 1);
-        marker = new GMarker(point, icon);
-        marker.bindInfoWindowHtml(html,{ maxWidth: infowidth });
-        map.addOverlay(marker);
-        allspecials[num] = marker;
-        return marker;
+
+    function WindowText(title, msg, lat, lng){
+        var txt  = '<div style="text-align:center;" >';
+            txt += '<strong>' + title + '<\/strong><br \/>' + msg;
+            txt += '<\/div>';
+            txt += '<div style="text-align:center; white-space:nowrap;"><br \/>';
+            txt += '<a title="<!--[pnml name='_GM_ZOOMIN']-->" ';
+            txt += 'href="javascript:void(0)" onclick="myZoom(' + lat + ',' + lng + ', 2)">';
+            txt += '<strong><!--[pnml name='_GM_ZOOMIN']--><\/strong><\/a>';
+            txt += '&nbsp;|&nbsp;';
+            txt += '<a title="<!--[pnml name='_GM_ZOOMOUT']-->" ';
+            txt += 'href="javascript:void(0)" onclick="myZoom(' + lat + ',' + lng + ', -2)">';
+            txt += '<strong><!--[pnml name='_GM_ZOOMOUT']--><\/strong><\/a>';
+            txt += '<\/div>';
+            return txt;
     }
+
+    <!--[if $gmapfile !="" ]-->
+    function GetMarkersFromFile(xmlfile){
+        GDownloadUrl(xmlfile, function(data, responseCode) {
+            if(responseCode == 200) {
+               var xml = GXml.parse(data);
+
+               // Get Pin information
+               var pininfo = xml.documentElement.getElementsByTagName("icon");
+
+               // Set Pin type cross reference
+               var pinxref = new Array();
+               for (var i = 0; i < pininfo.length; i++) {
+                  var pinimage   =  pininfo[i].getAttribute("image");
+                  var pintype    =  pininfo[i].getAttribute("type");
+                  if ( pinimage != null && pintype != null) {
+                      if (specialinfo.icons[cleanname(pinimage)]) {
+                          pinxref[pintype] = pinimage;
+                      }
+                  }
+               }
+
+               // Process Map Information
+               var mapinfo = xml.documentElement.getElementsByTagName("map");
+               for (var i = 0; i < mapinfo.length; i++) {
+                  var maplat   = parseFloat(mapinfo[i].getAttribute("lat"));
+                  var maplng   = parseFloat(mapinfo[i].getAttribute("lon"));
+                  var mapzoom  = mapinfo[i].getAttribute("zoom");
+                  var maptitle = mapinfo[i].getAttribute("title");
+               }
+               if ( maptitle != null ) {
+                   document.getElementById("maptitle").innerHTML = maptitle;
+               }
+               if ( maplat != null && maplng != null ){
+                   mapzoom = ( mapzoom != null ) ? parseInt(mapzoom) : parseInt(<!--[$pncore.gmap.initialzoomlevel|pnvarprepfordisplay]-->);
+                   map.setCenter(new GLatLng(maplat,  maplng), mapzoom);
+               }
+
+               // Process all the Special markers
+               var markers = xml.documentElement.getElementsByTagName("marker");
+               for (var i = 0; i < markers.length; i++) {
+                  var lat   = parseFloat(markers[i].getAttribute("lat"));
+                  var lng   = parseFloat(markers[i].getAttribute("lon"));
+                  var type  = markers[i].getAttribute("type");
+                  var title = markers[i].getAttribute("title");
+                  var desc  = markers[i].getAttribute("desc");
+                  desc = desc.replace(/\&gt\;/g,">");
+                  desc = desc.replace(/\&lt\;/g,"<");
+                  CreateMarker(specialinfo.type, lat, lng, pinxref[type], title, desc);
+               }
+
+               <!--[if $pncore.gmap.showspecialslist]-->
+               // Update the display of the side bar
+               $("specialsidebar").update('<ul>' + specialinfo.sidebar+ '<\/ul>');
+               <!--[/if]-->
+
+               <!--[if $pncore.gmap.legendspecialshow]-->
+               // Process the rest of the Pin Marker Information
+               // Note: Have to do this *after* the markers are created so we can show/hide them
+               for (var i = 0; i < pininfo.length; i++) {
+                  var pinimage   =  pininfo[i].getAttribute("image");
+                  var pintitle   =  pininfo[i].getAttribute("title");
+                  var pinshow    =  pininfo[i].getAttribute("show");
+                  var pinchecked =  pininfo[i].getAttribute("checked");
+
+                  if ( pinimage != null ) {
+                      var pinindex = cleanname(pinimage);
+                      if (specialinfo.icons[pinindex]) {
+                          if (pintitle != null ) {
+                              document.getElementById("legend_" + pinimage).innerHTML = pintitle;
+                          }
+                          if (pinchecked != null){
+                              pinchecked = (pinchecked != 0) ? true : false;
+                              showhidemarkers(specialinfo.type, pinimage, pinchecked);
+                          }
+                          if (pinshow !==null) {
+                              pinshow = (pinshow  != 0) ? '' : 'none';
+                              document.getElementById("cell_" + pinimage).style.display = pinshow;
+                          }
+                      }
+                  }
+               }
+               <!--[/if]-->
+
+               // Process all the lines
+	       // Fixes Ticket #5
+               var lines = xml.documentElement.getElementsByTagName("line");
+               for (var a = 0; a < lines.length; a++) {
+                  // get any line attributes
+                  var colour = lines[a].getAttribute("colour");
+                  var width  = parseFloat(lines[a].getAttribute("width"));
+
+                  // read each point on that line
+                  var points = lines[a].getElementsByTagName("point");
+                  var pts = [];
+                  for (var i = 0; i < points.length; i++) {
+                      pts[i] = new GLatLng(parseFloat(points[i].getAttribute("lat")), parseFloat(points[i].getAttribute("lon")));
+                  }
+                  map.addOverlay(new GPolyline(pts,colour,width));
+                }
+
+            } else if(responseCode == -1) {
+                alert("Data request timed out. Please try later.");
+            } else { 
+                alert("Request resulted in error. Check XML file is retrievable.");
+            }
+
+        });
+    }
+    <!--[/if]-->
 
   //]]>
 </script>
-  

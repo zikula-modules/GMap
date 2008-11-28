@@ -65,30 +65,29 @@ function gmap_admin_modify()
         return LogUtil::registerError(_GM_NOSUCHMARKER, null, pnModURL('gmap', 'admin', 'main'));
     }
 
-    // base folder for images
-    $ifolder = 'modules/gmap/pnimages';
     if ($item['uid'] > 1) {
         // user marker
+        $iconlist      = pnModGetVar('gmap','markerpinlist');
+        $ifolder       = 'modules/gmap/pnimages';
         $item['title'] = pnUserGetVar('uname', $item['uid']);
     } else {
-        // poi, append subfolder
-        $ifolder .= '/specials';
+        // special marker
+        $iconlist  = pnModGetVar('gmap','specialpinlist');
+        $ifolder   = 'modules/gmap/pnimages/specials';
     }
-
-    Loader::loadClass('FileUtil');
-    $files = FileUtil::getFiles($ifolder, false, true, 'png', false);
-    foreach($files as $file) {
-        if (ereg('mm_20_', $file) || ereg('marker_', $file)) {
-            $specialfiles[$file] = $file;
-        }
     
+    $icons = array();
+    foreach ($iconlist as $icon => $iconinfo) {
+        if ( $iconinfo['active'] != 0 ) {
+            $icons[$icon] = $iconinfo['name'];
+        }
     }
 
     PageUtil::addVar('javascript', 'javascript/ajax/prototype.js');
     PageUtil::addVar('javascript', 'modules/gmap/pnjavascript/googlemap.js');
 
     $pnRender = pnRender::getInstance('gmap', false);
-    $pnRender->assign('icons',  $specialfiles);
+    $pnRender->assign('icons',   $icons);
     $pnRender->assign('ifolder', $ifolder);
     $pnRender->assign($item);
 
@@ -172,4 +171,93 @@ function gmap_admin_delete()
     $pnRender = pnRender::getInstance('gmap', false);
     $pnRender->assign($item);
     return $pnRender->fetch('gmap_admin_delete.html');
+}
+
+/**
+ * readpins
+ *
+ *
+ */
+function gmap_admin_readpins() {
+
+    if (!SecurityUtil::checkPermission('gmap::', '::', ACCESS_ADMIN)) {
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
+
+    $submit = FormUtil::getPassedValue('submit', null, 'POST');
+
+    if(!$submit) {
+        $pnr = pnRender::getInstance('gmap', false, null, true);
+        return $pnr->fetch('gmap_admin_readpins.html');
+    }
+    // submit is set - update the Pins
+    $forcereload = FormUtil::getPassedValue('forcereload', 0, 'POST');
+    $forcereload = ($forcereload==1) ? true : false;
+    // @see adminapi.php#gmap_adminapi_updatepins()
+    pnModAPIFunc('gmap', 'admin', 'updatepins', array('forcereload' => $forcereload));
+    LogUtil::registerStatus(_GM_ADMIN_PINSREADFROMFILESYSTEM);
+    return pnRedirect(pnModURL('gmap', 'admin', 'editpins'));
+}
+
+/**
+ * editpins
+ *
+ *
+ */
+function gmap_admin_editpins() {
+
+    if (!SecurityUtil::checkPermission('gmap::', '::', ACCESS_ADMIN)) {
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
+
+    $submit = FormUtil::getPassedValue('submit', null, 'POST');
+
+    if(!$submit) {
+        $pnr = pnRender::getInstance('gmap', false, null, true);
+        $specialpinlist = pnModGetVar('gmap','specialpinlist');
+        $markerpinlist  = pnModGetVar('gmap','markerpinlist');
+        $pnr->assign('specialpinlist',$specialpinlist);
+        $pnr->assign('markerpinlist', $markerpinlist); 
+        return $pnr->fetch('gmap_admin_editpins.html');
+    }
+    // submit is set
+    // Get input
+    $icons   = FormUtil::getPassedValue('icon',   array(), 'POST');
+    $names   = FormUtil::getPassedValue('name',   array(), 'POST');
+    $active  = FormUtil::getPassedValue('active', array(), 'POST');
+    
+    $markers       = FormUtil::getPassedValue('marker',       array(), 'POST');
+    $markernames   = FormUtil::getPassedValue('markername',   array(), 'POST');
+    $markeractive  = FormUtil::getPassedValue('markeractive', array(), 'POST');    
+
+    $specialpinlist = array();
+    // Create an array with the input and deactivate all pins
+    for($i = 0; $i < sizeof($icons); $i++) {
+        $specialpinlist[$icons[$i]] = array(  'name'   => $names[$i],
+                                              'active' => 0
+                                            );
+    }
+    // And now set the active flag for all selected special marker pins
+    for ($i = 0; $i < sizeof($active); $i++) {
+  	    $specialpinlist[$active[$i]]['active'] = 1;
+    }
+
+
+    $markerpinlist = array();
+    // Create an array with the input and deactivate all pins
+    for($i = 0; $i < sizeof($markers); $i++) {
+        $markerpinlist[$markers[$i]] = array(  'name'   => $markernames[$i],
+                                               'active' => 0
+                                            );
+    }
+    // And now set the active flag for all selected markers
+    for ($i = 0; $i < sizeof($markeractive); $i++) {
+  	    $markerpinlist[$markeractive[$i]]['active'] = 1;
+    }
+
+   pnModSetVar('gmap','specialpinlist', $specialpinlist);
+   pnModSetVar('gmap','markerpinlist',  $markerpinlist);   
+
+   LogUtil::registerStatus(_GM_ADMIN_EDITEDPINSSAVED);
+   return pnRedirect(pnModURL('gmap', 'admin', 'editpins'));
 }

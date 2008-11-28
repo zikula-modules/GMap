@@ -1,0 +1,439 @@
+<gmap>
+
+<map title="Comal County, Texas" lat="29.810859" lon="-98.301544" zoom="10"/>
+
+<icon type="1"  image="mm_20_blue.png"    show="1" checked="1" title="Water Features" />
+<icon type="2"  image="mm_20_grey.png"    show="1" checked="1" title="Communities" />
+<icon type="3"  image="mm_20_brown.png"   show="1" checked="1" title="Airfields" />
+<icon type="4"  image="mm_20_purple.png"  show="1" checked="1" title="Cemeteries" />
+<icon type="5"  image="mm_20_red.png"     show="1" checked="1" title="Churches" />
+<icon type="6"  image="mm_20_orange.png"  show="1" checked="0" title="Historical Markers" /> <!-- Force show, but unchecked --> 
+<icon type="7"  image="mm_20_yellow.png"  show="1" checked="1" title="Schools" />
+<icon type="8"  image="mm_20_black.png"   show="1" checked="1" title="Places" />
+<icon type="9"  image="mm_20_green.png"   show="1" checked="1" title="Land Features" />
+<icon type="10" image="mm_20_white.png"   show="1" checked="0" /> <!-- Force no show -->
+<icon type="11" image="mm_20_darkred.png" />   <!-- Keep the same as previously defined -->
+
+<!-- NOTE: icons for marker are given by the 'type' -->
+<marker lat="29.853611" lon="-98.418055" type="1"  title="Ahern Creek" desc="" />
+<marker lat="29.826666" lon="-98.291944" type="9"  title="Allen Park" desc="" />
+<marker lat="29.708888" lon="-98.096111" type="8"  title="Andreas Breustedt House" desc="" />
+<marker lat="29.691631" lon="-98.259658" type="4"  title="Andreas Cemetery" desc="" />
+<marker lat="29.794166" lon="-98.475555" type="2"  title="Anhalt" desc="" />
+<marker lat="29.797222" lon="-98.449166" type="7"  title="Arlon R Seay Intermediate School" desc="" />
+<marker lat="29.61    " lon="-98.321111" type="2"  title="Bracken" desc="" />
+<marker lat="29.630555" lon="-98.274722" type="5"  title="Bracken Church" desc="" />
+<marker lat="29.628611" lon="-98.279166" type="5"  title="Bracken United Methodist Church" desc="" />
+<marker lat="29.929722" lon="-98.311111" type="4"  title="Bremer Cemetery" desc="" />
+<marker lat="29.743888" lon="-98.453055" type="2"  title="Bulverde" desc="" />
+<marker lat="29.739166" lon="-98.451388" type="3"  title="Bulverde Airpark" desc="" />
+<marker lat="29.760277" lon="-98.461944" type="7"  title="Bulverde Elementary School" desc="" />
+<marker lat="29.760555" lon="-98.459722" type="7"  title="Bulverde School" desc="" />
+<marker lat="29.764444" lon="-98.446388" type="2"  title="Bulverde South (historical)" desc="" />
+<marker lat="29.7725  " lon="-98.525277" type="2"  title="Bulverde West (historical)" desc="" />
+<marker lat="29.873888" lon="-98.187777" type="2"  title="Canyon City" desc="" />
+<marker lat="29.709031" lon="-98.088061" type="7"  title="Canyon High School" desc="" />
+<marker lat="29.704082" lon="-98.096365" type="7"  title="Canyon Intermediate School" desc="" />
+<marker lat="29.875277" lon="-98.2625  " type="2"  title="Canyon Lake" desc="" />
+<marker lat="29.898888" lon="-98.214444" type="3"  title="Canyon Lake Airport" desc="" />
+<marker lat="29.711090" lon="-98.072354" type="7"  title="Canyon Middle School" desc="" />
+<marker lat="29.893333" lon="-98.235   " type="9"  title="Canyon Park" desc="" />
+<marker lat="29.872777" lon="-98.2875  " type="2"  title="Canyon Springs" desc="" />
+<marker lat="29.759166" lon="-98.5175  " type="2"  title="Canyon View Acres" desc="" />
+<marker lat="29.695583" lon="-98.123831" type="7"  title="Carl Schurz Elementary School" desc="" />
+<marker lat="29.695555" lon="-98.125   " type="7"  title="Carl Schurz School" desc="" />
+<marker lat="29.703449" lon="-98.124732" type="8"  title="Comal County Courthouse" desc="" />
+<marker lat="29.643640" lon="-98.227858" type="7"  title="Comal Elementary School" desc="" />
+<marker lat="29.704722" lon="-98.123333" type="8"  title="Comal Hotel" desc="" />
+<marker lat="29.865833" lon="-98.248055" type="9"  title="Comal Park" desc="" />
+<marker lat="29.692222" lon="-98.097222" type="9"  title="Comal Park" desc="" />
+<marker lat="29.725277" lon="-98.141944" type="1"  title="Comal Springs" desc="" />
+<marker lat="29.771666" lon="-98.0725  " type="4"  title="Conrads Cemetery" desc="" />
+<marker lat="29.711666" lon="-98.106111" type="9"  title="Cypress Bend Park" desc="" />
+<marker lat="29.639444" lon="-98.234722" type="7"  title="Danville School" desc="" />
+<marker lat="29.808611" lon="-98.447222" type="9"  title="Devils Hill" desc="" />
+<marker lat="29.681111" lon="-98.179166" type="2"  title="Dittlinger" desc="" />
+<marker lat="29.704444" lon="-98.123055" type="8"  title="Dittlinger Memorial Library" desc="" />
+<marker lat="29.7025  " lon="-98.101388" type="5"  title="Eastside Baptist Church" desc="" />
+<marker lat="29.724444" lon="-98.128611" type="8"  title="Eden Home" desc="" />
+<marker lat="29.686944" lon="-98.109166" type="5"  title="Evangel Temple Assembly of God Church" desc="" />
+<marker lat="29.745833" lon="-98.643333" type="2"  title="Fair Oaks Ranch" desc="" />
+<marker lat="29.6825  " lon="-98.148333" type="5"  title="First Presbyterian Church" desc="" />
+<marker lat="29.701111" lon="-98.122777" type="5"  title="First Protestant Church" desc="" />
+<marker lat="29.976944" lon="-98.265833" type="2"  title="Fischer" desc="" />
+<marker lat="29.737222" lon="-98.379166" type="3"  title="Flying J Airport" desc="" />
+<marker lat="29.717222" lon="-98.068888" type="2"  title="Freiheit" desc="" />
+<marker lat="29.738333" lon="-98.103888" type="2"  title="Gruene" desc="" />
+<marker lat="29.741388" lon="-98.106111" type="2"  title="Gruene Historic District" desc="" />
+<marker lat="29.745833" lon="-98.100555" type="2"  title="Gruene Siding" desc="" />
+<marker lat="29.703055" lon="-98.125277" type="8"  title="Guadalupe Hotel" desc="" />
+<marker lat="29.874722" lon="-98.504444" type="9"  title="Guadalupe River State Park" desc="" />
+<marker lat="29.711666" lon="-98.268611" type="4"  title="Hillert Cemetery" desc="" />
+<marker lat="29.744166" lon="-98.4225  " type="4"  title="Hitzfelder Cemetery" desc="" />
+<marker lat="29.708888" lon="-98.113055" type="5"  title="Hosanna Baptist Church" desc="" />
+<marker lat="29.710277" lon="-98.123888" type="8"  title="Hotel Faust" desc="" />
+<marker lat="29.759722" lon="-98.140555" type="1"  title="Hueco Springs" desc="" />
+<marker lat="29.807222" lon="-98.023611" type="2"  title="Hunter" desc="" />
+<marker lat="29.884166" lon="-98.219166" type="9"  title="Jacobs Creek Park" desc="" />
+<marker lat="29.730833" lon="-98.121111" type="8"  title="KNBT-FM (New Braunfels)" desc="" />
+<marker lat="29.773888" lon="-98.456111" type="4"  title="Koch Cemetery" desc="" />
+<marker lat="29.713611" lon="-98.118611" type="9"  title="Lamar Park" desc="" />
+<marker lat="29.713333" lon="-98.117777" type="7"  title="Lamar Primary School" desc="" />
+<marker lat="29.710277" lon="-98.130277" type="9"  title="Landa Park" desc="" />
+<marker lat="29.705   " lon="-98.099444" type="8"  title="Lindheimer Home" desc="" />
+<marker lat="29.694444" lon="-98.146944" type="3"  title="McCoy Building Sup 16 Heliport" desc="" />
+<marker lat="29.715277" lon="-98.123611" type="8"  title="McKenna Memorial Hospital" desc="" />
+<marker lat="29.692222" lon="-98.3425  " type="8"  title="Natural Bridge of Texas" desc="" />
+<marker lat="29.703055" lon="-98.124444" type="2"  title="New Braunfels" desc="" />
+<marker lat="29.685219" lon="-98.139131" type="4"  title="New Braunfels Cemetery" desc="" />
+<marker lat="29.700277" lon="-98.125277" type="8"  title="New Braunfels Fire Museum" desc="" />
+<marker lat="29.718488" lon="-98.150954" type="7"  title="New Braunfels High School" desc="" />
+<marker lat="29.693141" lon="-98.122501" type="7"  title="New Braunfels Middle School" desc="" />
+<marker lat="29.706542" lon="-98.047227" type="3"  title="New Braunfels Municipal Airport" desc="" />
+<marker lat="29.681111" lon="-98.151666" type="5"  title="New Braunfels Seventh Day Adventist Church" desc="" />
+<marker lat="29.711666" lon="-98.109722" type="4"  title="Perpetuo Socorro Cemetery" desc="" />
+<marker lat="29.696111" lon="-98.126666" type="5"  title="Saint Johns Episcopal Church" desc="" />
+<marker lat="29.805   " lon="-98.501388" type="5"  title="Saint Joseph Catholic Church" desc="" />
+<marker lat="29.8025  " lon="-98.5     " type="5"  title="Saint Joseph Chapel" desc="" />
+<marker lat="29.646884" lon="-98.218502" type="5"  title="Saint Joseph Chapel (Comal)" desc="" />
+<marker lat="29.647220" lon="-98.220648" type="4"  title="Saint Joseph Cemetery (Comal)" desc="" />
+<marker lat="29.735277" lon="-98.439722" type="5"  title="Saint Paul Lutheran Church" desc="" />
+<marker lat="29.696388" lon="-98.129722" type="5"  title="Saint Paul Lutheran Church" desc="" />
+<marker lat="29.738333" lon="-98.438888" type="5"  title="Saint Pauls Church" desc="" />
+<marker lat="29.714166" lon="-98.109444" type="4"  title="Saints Peter and Paul Cemetery" desc="" />
+<marker lat="29.703383" lon="-98.128402" type="5"  title="Saints Peter and Paul Church" desc="" />
+<marker lat="29.703206" lon="-98.127672" type="7"  title="Saints Peter and Paul School" desc="" />
+<marker lat="29.848055" lon="-98.175555" type="2"  title="Sattler" desc="" />
+<marker lat="29.813055" lon="-98.337222" type="2"  title="Smithson Valley" desc="" />
+<marker lat="29.805277" lon="-98.334444" type="4"  title="Smithson Valley Cemetery" desc="" />
+<marker lat="29.743611" lon="-98.453888" type="5"  title="Smithson Valley Evangelical Free Church" desc="" />
+<marker lat="29.804722" lon="-98.351111" type="7"  title="Smithson Valley High School" desc="" />
+<marker lat="29.822178" lon="-98.346176" type="7"  title="Smithson Valley Middle School" desc="" />
+<marker lat="29.665833" lon="-98.170833" type="2"  title="Solms" desc="" />
+<marker lat="29.698333" lon="-98.124166" type="8"  title="Sophienburg Museum and Archives" desc="" />
+<marker lat="29.89    " lon="-98.425277" type="2"  title="Spring Branch" desc="" />
+<marker lat="29.716774" lon="-98.153454" type="9"  title="Unicorn Stadium" desc="" />
+<marker lat="29.772777" lon="-98.275555" type="2"  title="Valley View" desc="" />
+<marker lat="29.853611" lon="-98.049166" type="2"  title="Wegner Ranch" desc="" />
+
+<marker lat="29.705288" lon="-98.095491" type="6"  title="Comal County" desc=" Formed from Travis and Bexar land districts. Created - March 24,1846; Organized - July-13, 1846; Named for the river, so called from the pancake shape of the islands formed by its springs. New Braunfels, county seat establshed March 21,1845. Named in honor of the founder Prince Carl of Solms-Braunfels.  &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;On Business IH 35, just north of intersection with SH 46, New Braunfels - (1 mi. N New Braunfels, US 81)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.704977" lon="-98.124458" type="6"  title="Comal County Courthouse" desc=" In 1846 Comal County held its first court session in the home of its county clerk, Conrad Seabaugh. Courthouse facilities acquired in 1849 proved inadequate and were replaced with a 2-story building at the southeast corner of the city plaza in 1860. The building fell into disrepair and in 1898 the county chose famous Texas courthouse architect J. Riley Gordon to design a new courthouse. Gordon's original design, incorporating four entrances compatible with the building's proposed location at the center of the plaza, was nevertheless retained when this corner lot site was chosen instead . Austin contractors Fischer and Lamie used stone quarried 10 miles north of New Braunfels on land owned by Texas/U.S.statesman Edward Mandell House to build this courthouse in 1898. The 3 1/2 story Romanesque-style structure features rounded pavilion entrances often employed by Gordon and includes dramatic massing and superb detail in its stone work. A 1929-31 large stone jail addition was designed by Jeremiah Schmidt of New Braunfels. The courthouse underwent considerable interior and minor exterior renovations in 1966-67 and 1987. The courthouse reflects New Braunfel's German heritage and the spirit of Comal County at the turn of the twentieth century.  Recorded Texas Historic Landmark - 1993&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;150 N Sequin, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.70325"  lon="-98.12252"  type="6"  title="Early Settler&amp;#39s Home" desc=" Situated on lot deeded to colonist Christoph Luentezl. Adobe brick and cedar beam house was begun about 1850 by Heinrich Bevenroth (d.1850) and enlarged by later owners Heinrich C. Pohlmann, Mrs.Elisabeth Gehrung, Edmond Schramm, and August Pursch.  RTHL-1972&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;251 S.Sequin St., New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.701549" lon="-98.123209" type="6"  title="Faust Hotel" desc="  First known as the Travelers Hotel, this inn was completed in 1929 with 63 guest rooms and reflected the thriving economy of the New Braunfels area at the time. Renamed &quot;The Faust&quot; in 1936 for the prominent family on whose homesite it was built, the structure has remained in continuous use as a hotel. Its Spanish Colonial Revival design is highlighted by the ornate terra cotta decorative work.  Recorded Texas Historic Landmark - 1984&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;240 S Seguin&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.697158" lon="-98.107288" type="6"  title="Faust Street Bridge" desc="Caravans carrying supplies to Spanish missions in east Texas and other travelers crossed the Guadalupe River on El Camino Real (The King's Highway) near this site in the 18th century.  It sometimes took weeks for floodwaters to subside so travelers could cross.  In 1887, the Comal County commissioners court contracted with the King Iron Bridge Company of Ohio to build a high water bridge over the Guadalupe River.   Among the last wrought iron bridges built in Texas and one of the first long-term toll-free structures completed over a major waterway in the state, this monumental truss structure extends more than 640 feet in length.  It is comprised of two main spans, known as Pratt (Whipple) truss spans, flanked by two smaller spans.  The Whipple was a variation on the more typical Pratt truss style bridge design which enjoyed brief but explosive popularity in the mid- to late-19th century.  These trusses are connected by a pin-and-hanger system, which was the common method of the time.  The spans are supported by oval-shaped masonry piers with rusticated stonework and pointed, or &quot;cut-water,&quot; ends.  In 1917, the Texas Highway Department designated the Faust Street bridge to serve as a major crossing for all traffic between Austin and San Antonio on state highway 2, formerly the Austin-San Antonio post road.  In 1934, a new concrete highway bridge was erected.  The Faust Street bridge continued to serve local traffic until it was damaged by fire in 1979.  Its unique design, using a combination of Pratt and Whipple truss types, and its wrought iron construction place the Faust Street bridge among the important historic bridges in the state.  Recorded Texas Historic Landmark-1999  &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;east end of Faust Street, at Guadalupe River&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.705320" lon="-98.131208" type="6"  title="First Patented Wire Fence" desc="[Special fence design at top of inscription]  Virgina native William H. Meriwether (b. 1800), an early Comal County plantation owner, ran a sawmill, cotton gin and gristmill at this site. As an agriculturalist, he was aware of the need for an economical and practical source of fencing material. His interest led to the development of smooth wire and board fence that effectively resisted the temperature changes that had been so damaging to earlier wire fences. His invention known as snake wire fencing, was awarded patent No.10211 on November 8, 1853. It was the first patent for wire fence issued in the United States.  Although not widely accepted, Meriwether's fence was an important step in the development of an economical fencing material. It also played a role in later wire fence patent disputes. Meriwether sold his mill site to German native Joseph Landa in 1859 and moved to Tennessee, where he died in 1861.    (1982)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;100 block Landa St., entrance to Wurstfest grounds at Landa Park, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.701398" lon="-98.122780" type="6"  title="First Protestant Church" desc=" State Historical Survey Committee Official Historical Medallion. (not a state marker)    (Site of &quot;The German Protestant Church&quot; charterd by the Republic of Texas in 1845 and organized in that year. Erected by DeZavala Chapter, Texas Historical and Landmark Association, and Daughters and Sons of the Heroes of Texas 1948 )&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;172 W. Coll, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.702936" lon="-98.124615" type="6"  title="Fischer House" desc="  German immigrant John Heinrich Fischer built this log cabin about 1860 on land he purchased from August Forcke.  He and his wife, Auguste (Koch), reared their family here until selling the cabin to their daughter Anna in 1881.  Built of hand-hewn cedar and limestone, the Fischer House includes a front shed roof porch and rear shed roof kitchen.  The original dog trot (open hallway through the center of the house) was enclosed in the mid-20th century.  A scarce example of an early log cabin on its original site, the Fischer House is a reminder of Texas' German heritage.     Recorded Texas Historic Landmark - 2000&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;Please help by giving us the exact location of this marker." />
+<marker lat="29.873843" lon="-98.202753" type="6"  title="German Pioneers in Texas" desc="In this area, now covered by Canyon Lake, German emigrants were the first settlers.  A society of Nobles (Mainzer Adelsverein) sponsored the emigration of 7,380 Germans to Texas from 1844 to 1847. They founded New Braunfels in 1845. Moving west, they established Fredericksburg in 1846.  Their Comanche Indian treaty opened 3,800,000 acres between the Llano and Colorado Rivers to peaceful settlement.  Farmers and artisans, scholars and scientists, they triumphed over epidemic and privation to help build Texas and the West.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;Hwy. 306, about 12 mi. NE of New Braunfels at North Lookout on Canyon Dam&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;Is this in the right location" />
+<marker lat="29.705144" lon="-98.129305" type="6"  title="Grotto, Saints Peter and Paul Catholic Church" desc=" A major influenza epidemic spread across the United States in 1918 causing many deaths. Under the leadership of Father J. M. J. Wack (d.1927), who served Saints Peter and Paul Church for 38 years, members constructed this grotto to commemorate an end to the disease-related deaths in the parish. Modeled after the Lourdes grotto in southwestern France, it was built of native rock gathered from area ranches. Aided by parishioners, J. J. Scholz of Nebraska completed the stonework. The congregation dedicated the shrine during celebration on June 29,1921. (1980)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;next to church&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.73952"  lon="-98.103715" type="6"  title="Gruene&amp;#39s Hall" desc=" Built in 1878 as a saloon and social hall for area cotton farmers, this is belived to one of the oldest dance halls in Texas . Christian Herry (1854-1917) built the hall under the direction of town developer Henry D. Gruene, for whom many of the farmers worked. The center of the community's social life for over a century, the large one-story structure features a &quot;false front&quot; entry with asymmetrical window and door arrangements.  Recorded Texas Historic Landmark -1988&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;Gruene Historic District, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.706739" lon="-98.113982" type="6"  title="Guadalupe and the Comal, Junction of Two Important Rivers, the" desc="     Site claimed May 8, 1718, for King of Spain by Gov. Martin de Alarcon, and used by priests and army units in traffic to East Texas.      In 1845, ferry here, run by Adolph von Wedemeyer, aided German immigrants settling Central Texas.      In 1860s this was site of brick kiln and tannery.   (1968)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;backyard of home located at 246 East Lincoln St. (private property), New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.703146" lon="-98.125932" type="6"  title="Henne, Louis, Co." desc=" Victorian embellishments distinguish this structure, built 1893 by noted local contractor Christian Herry. Owner Louis Henne (1840 -1912) worked in the family tin shop next door, expanded to this site. Third generation now conducts this business.  Recorded Texas Historic Landmark - 1973&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;246 W. San Antonio St., New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.714916" lon="-98.10994"  type="6"  title="Lindheimer, Ferdinand J." desc="  Soldier in the Texas Army, 1836. A botanist of note. Born in Germany, May 2, 1801. Died December 2, 1879. His wife Eleonora Reinarz Lindheimer born August 3, 1818. Died May 16, 1895.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;Area 6A - (Ave. B) Comal Cemetery, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.701552" lon="-98.118255" type="6"  title="Lindheimer, Ferdinand, Home" desc=" (1801-1879) Soldier in Texas Revolution. Father of Texas botany. Editor of the Neu Braunfels Zeitung. (1852-1872)  (Comal Ave., New Braunfels)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;489 Comal Ave., New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.701552" lon="-98.118255" type="6"  title="Lindheimer, Ferdinand, Home" desc="(1801 - 1879)  Soldier in the Texas Revolution; father of Texas botany. Editor of the New Braunfelser Zeitung, 1852-1872. &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;489 Comal Ave., New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.694135" lon="-98.342241" type="6"  title="Natural Bridge Caverns" desc=" Discovered March 27, 1960, by four students of St. Mary's University, San Antonio. Named for the rock bridge that marks entrance. Dedicated on August 5, 1964 by Governor John Connally.  Of early cretaceous age; still forming. Site of artifacts from 5000 B.C., and human remains at least 8,000 years old; also Indian campsites. 1967&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;from New Braunfels about 8.5 mi. west, caverns located on FM 1863 &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.74035"  lon="-98.104938" type="6"  title="Neuse, Erhardt, House" desc="  Built in the 1880s by Henry D. Gruene, this was the home of the family of Erhardt Neuse, field foreman of Erhardt of H. D. Gruene's vast cotton interests.The Neuse family continued to reside here until the 1930s when the town of Gruene experinced a decline. Features of the late 19th-century veranacular cottage include an extended side bay with angled conrers, board-and-batten siding, and an inset front porch with milled brackets.  Recorded Texas Historic Landmark - 1987&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;in greurde hist. district. 1297 gruene road new braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.712192" lon="-98.136047" type="6"  title="New Braunfels" desc="Founded on March 21, 1845 by Carl, Prince of Solms-Braunfels, Commissioner-General of the Society for the Protection of German Immigrants in Texas. Named after Prince Solms' estate, Braunfels, on the Lahn River in Germany. Its permanence was assured by John O. Meusebach, the second Commissioner-General. The first colonial officials were Jean J. Von Coll, bookkeeper; Nicholaus Zink, surveyor; Theodore Koester, physician. L.C. Evenberg served as pastor and Hermann F. Seele as teacher. Comal County was created on March 24, 1846, by an act of the first Legislature of Texas. The New Braunfelser Zeitung, oldest German newspaper in Texas, began publication on November 12, 1852, with Ferdinand Lindheimer as editor. The first Staatssaengerfest was held at New Braunfels on October 16, 1853, and the first special tax for school purposes levied and collected in Texas was voted by New Braunfels on March 17, 1856.  Erected by the State of Texas 1936 with funds appropriated by the Federal Government to commemorate one hundred years of Texas independence.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;corner of Landa Park Monument Drive, Landa Park, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.704977" lon="-98.124458" type="6"  title="New Braunfels" desc="Founded on Good Friday, March 21, 1845, by German immigrants led by Prince Carl of Solms-Braunfels. Named for Braunfels, on the Lahn River, Germany.  Earlier inhabitants were Karankawa, Lipan, Tonkawa and Waco Indians. Land (1,265 acres) was acquired for the German colonists by sales contract from Rafael L. Garza and wife, Maria Antonia Veramendi Garza. A drawing for plots was held among colonists in 1845.  City was incorporated by Texas Legislature on May 11, 1846, but charter was not ratified until 1847. By 1850, New Braunfels was one of largest cities in Texas. Because of ideal climate and abundant natural resources, agriculture and industry thrived. Early craftsmen included bakers, blacksmiths, butchers, button-and-fringe makers, cabinetmakers, carpenters, coppersmiths, locksmiths, machinists, saddlers, tailors, shoemakers, tanners, tinsmiths, turners, wagonmakers. Industries included brick kilns, cotton gins, door and blind factory, flour and grist mills, breweries, sawmill, soap and candle house, and woolen mill.  This city was undaunted by early hardships. It had courageous citizens under superior leadership. Many old-world customs survive among descendants of the original colonists.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;at Courthouse -150 N. Sequin St., New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.707169" lon="-98.09474"  type="6"  title="New Braunfels" desc="Founded in Republic of Texas, 1845, by Prince Karl of Solms-Braunfels. Focal point of German immigration to central and western Texas.  Sent men, goods to Confederacy, in Civil War.  Historic, recreational, tourist center. Site of Landa Park and Sophienburg Museum. The Comal is known as shortest large-volume river in U.S.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;Hwy 81 east of New Braunfels (about 1/2 mi. east of Business 35 &amp; Hwy. 46 intersection&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.702495" lon="-98.128449" type="6"  title="New Braunfels High School, Old" desc=" Built in 1913 to replace the old New Braunfels Academy, this building was designed by San Antonio architects C. V. Seutter and Alister Shand, and built by local contractor Adolph F. Moeller. It served as an eductional facility for over fifty years, reflecting influences of the Prairie School style. The bulding features corbelled brick and stone detail, a broad one-story entry porch, and some windows with fine muntin detail in the upper sashes.  Recorded Texas Historic Landmark - 1986&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;430 W. Mill Street, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.711666" lon="-98.195787" type="6"  title="New Braunfels Schuetzen Verein" desc="   The New Braunfels Schuetzen Verein organized in 1849 as one of the nation's early shooting clubs. German immigrants founded the town only four years earlier in 1845 and brought the tradition of target shooting to America from their homeland. The need to provide food and protect homes also necessitated the practice in the New Braunfels area, as many early settlers joined the organization.     As the city of New Braunfels grew, the Schuetzen Verein moved several times to avoid residential areas. The club moved in the years prior to World War I and then again when New Braunfels doubled in size in the years after World War II. It was also during this time that the Mission Valley Schuetzen Verein merged with New Braunfels' club. In the following decades, New Braunfels continued to grow, especially as it became part of an extended metropolitan area. With the city's continued expansion, the shooting club relocated again.     The Schuetzen Verein's most important event is the Koenig (King) matches held annually since before the Civil War. An important tradition in the community, members continued it even through the ammunition shortages of the Civil War and World War I, sometimes firing only once each to maintain status of the organization.     After more than 150 years of existence, the New Braunfels Schuetzen Verein continues to meet, serving as a reminder of the town's German heritage and historic past.   (2006)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;815 FM 1863&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.699171" lon="-98.124054" type="6"  title="Seele, Hermann" desc=" (April 14,1832 - March 18 1902)  A native of Hildesheim, Hanover, Germany, Hermann Seele came to Texas in 1843. He became the fist school teacher in New Braunfels on August 11,1845 when he held class for 15 pupils beneath elm trees at the foot of the hill. Selle hepled organize first Protestant church, the newpaper &quot;Zeitung,&quot; and several social and cultural clubs. He was first district clerk for Comal County,1846-54, state legislator,1863-65, justice of the peace, mayor, city alderman, and postmaster. A farmer,lawyer, and supporter of public edcuation, Seele left written accounts of pioneer life in New Braunfels.   (1976)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;at Sophienburg Museum - at door &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.883839" lon="-98.450801" type="6"  title="Specht&amp;#39s Crossing" desc=" Area settlers in horse-drawn carriages used this gravel bed low water crossing of the San Antonio-Blanco Road to reach the German settlement of Spring Branch. Despite frequent floods, use of the crossing increased during the years (1875-1906). Spring Branch postmaster Hans (Von) Specht maintained the post office in his hilltop home overlooking the crossing. Thereafter known as Specht's Crossing, it was later used by automobile travelers until replaced by a low water bridge in 1920. In 1934 a new bridge was constructed by the Civil Works Administration.  (1993)&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;just west of bridge over Spring Branch  4.5 mi. west of Spring Branch commuinty on county road&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.700549" lon="-98.116724" type="6"  title="Texas Germans in the Civil War" desc=" In 1861, ten heavily German counties in Texas voted against secession, though Comal County was as exception. States' rights puzzled some voters. Many had lately taken naturalization oaths. After secession, some avoided military duty from concern about their families. Others left to join U.S.units. Majority sentiment supported the Confederacy. Three companies from Comal, with other German troops, were praised for their discipline, high morale and skill, and the pride with which they defended Texas.&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;at inersection of S.Comal and E. Jahn in Lindheimer Plaza, New Braunfels&amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+<marker lat="29.704228" lon="-98.122958" type="6"  title="Voight House, The" desc=" &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;br /&amp;gt;&amp;lt;br /&amp;gt;" />
+
+
+<line name="Comal County" colour="#FF0000" width="4" >
+ <point lat=" 29.94437300" lon="-98.40610700"></point>
+ <point lat=" 29.98721100" lon="-98.35627700"></point>
+ <point lat=" 30.01414300" lon="-98.32497700"></point>
+ <point lat=" 30.03799300" lon="-98.29759800"></point>
+ <point lat=" 30.00753700" lon="-98.25438400"></point>
+ <point lat=" 30.00123400" lon="-98.24555400"></point>
+ <point lat=" 29.99504500" lon="-98.23684900"></point>
+ <point lat=" 29.96766500" lon="-98.19855500"></point>
+ <point lat=" 29.96654200" lon="-98.19694900"></point>
+ <point lat=" 29.96034100" lon="-98.18814400"></point>
+ <point lat=" 29.93431500" lon="-98.15158600"></point>
+ <point lat=" 29.93294700" lon="-98.14968700"></point>
+ <point lat=" 29.93062900" lon="-98.14643400"></point>
+ <point lat=" 29.91294100" lon="-98.12140500"></point>
+ <point lat=" 29.87772900" lon="-98.07153100"></point>
+ <point lat=" 29.84951700" lon="-98.03189400"></point>
+ <point lat=" 29.84853900" lon="-98.03052300"></point>
+ <point lat=" 29.83315600" lon="-98.02550300"></point>
+ <point lat=" 29.81655000" lon="-98.02008500"></point>
+ <point lat=" 29.81217500" lon="-98.01865700"></point>
+ <point lat=" 29.81108800" lon="-98.01830200"></point>
+ <point lat=" 29.80147800" lon="-98.01516600"></point>
+ <point lat=" 29.80090300" lon="-98.01497800"></point>
+ <point lat=" 29.78544300" lon="-98.00993100"></point>
+ <point lat=" 29.78232400" lon="-98.00891400"></point>
+ <point lat=" 29.75558600" lon="-98.00028300"></point>
+ <point lat=" 29.75244400" lon="-97.99927100"></point>
+ <point lat=" 29.75171400" lon="-98.00028300"></point>
+ <point lat=" 29.73902300" lon="-98.01788300"></point>
+ <point lat=" 29.71902400" lon="-98.04398400"></point>
+ <point lat=" 29.70882400" lon="-98.05718400"></point>
+ <point lat=" 29.70812400" lon="-98.05808400"></point>
+ <point lat=" 29.70792400" lon="-98.05828400"></point>
+ <point lat=" 29.69902400" lon="-98.06978500"></point>
+ <point lat=" 29.69416200" lon="-98.07603700"></point>
+ <point lat=" 29.69327300" lon="-98.07718000"></point>
+ <point lat=" 29.69132500" lon="-98.07978500"></point>
+ <point lat=" 29.68342500" lon="-98.09028500"></point>
+ <point lat=" 29.68332500" lon="-98.09068500"></point>
+ <point lat=" 29.68312500" lon="-98.09128500"></point>
+ <point lat=" 29.68250900" lon="-98.09261000"></point>
+ <point lat=" 29.68022500" lon="-98.09768500"></point>
+ <point lat=" 29.67902500" lon="-98.10038500"></point>
+ <point lat=" 29.67761800" lon="-98.10379100"></point>
+ <point lat=" 29.67712500" lon="-98.10498500"></point>
+ <point lat=" 29.67662500" lon="-98.10610100"></point>
+ <point lat=" 29.67232800" lon="-98.11599300"></point>
+ <point lat=" 29.67203700" lon="-98.11666300"></point>
+ <point lat=" 29.66772500" lon="-98.12658600"></point>
+ <point lat=" 29.66472500" lon="-98.13358600"></point>
+ <point lat=" 29.66076000" lon="-98.14307200"></point>
+ <point lat=" 29.65732600" lon="-98.15128600"></point>
+ <point lat=" 29.64892600" lon="-98.17148700"></point>
+ <point lat=" 29.64362600" lon="-98.18438700"></point>
+ <point lat=" 29.63732600" lon="-98.19948800"></point>
+ <point lat=" 29.63732600" lon="-98.19958800"></point>
+ <point lat=" 29.63658800" lon="-98.20135900"></point>
+ <point lat=" 29.63632600" lon="-98.20198800"></point>
+ <point lat=" 29.63623000" lon="-98.20224800"></point>
+ <point lat=" 29.63612900" lon="-98.20252000"></point>
+ <point lat=" 29.63326100" lon="-98.21025500"></point>
+ <point lat=" 29.63302600" lon="-98.21088800"></point>
+ <point lat=" 29.63214300" lon="-98.21328800"></point>
+ <point lat=" 29.62302600" lon="-98.23818800"></point>
+ <point lat=" 29.62254100" lon="-98.23952200"></point>
+ <point lat=" 29.61462700" lon="-98.26008900"></point>
+ <point lat=" 29.60602700" lon="-98.28089000"></point>
+ <point lat=" 29.60549000" lon="-98.28223500"></point>
+ <point lat=" 29.60546700" lon="-98.28229300"></point>
+ <point lat=" 29.60416200" lon="-98.28555500"></point>
+ <point lat=" 29.60411500" lon="-98.28567300"></point>
+ <point lat=" 29.60367000" lon="-98.28678400"></point>
+ <point lat=" 29.60310200" lon="-98.28820300"></point>
+ <point lat=" 29.60242700" lon="-98.28989000"></point>
+ <point lat=" 29.60011000" lon="-98.29594500"></point>
+ <point lat=" 29.59970400" lon="-98.29719700"></point>
+ <point lat=" 29.59969000" lon="-98.29723300"></point>
+ <point lat=" 29.59962700" lon="-98.29739000"></point>
+ <point lat=" 29.59452700" lon="-98.31079000"></point>
+ <point lat=" 29.60232700" lon="-98.31319000"></point>
+ <point lat=" 29.60202700" lon="-98.31749100"></point>
+ <point lat=" 29.60402700" lon="-98.32449100"></point>
+ <point lat=" 29.60591700" lon="-98.32769100"></point>
+ <point lat=" 29.60822700" lon="-98.32869100"></point>
+ <point lat=" 29.61002100" lon="-98.32854700"></point>
+ <point lat=" 29.61035900" lon="-98.32891500"></point>
+ <point lat=" 29.61185100" lon="-98.33728300"></point>
+ <point lat=" 29.61275600" lon="-98.33897900"></point>
+ <point lat=" 29.61749000" lon="-98.34377100"></point>
+ <point lat=" 29.61812600" lon="-98.34499100"></point>
+ <point lat=" 29.61976400" lon="-98.34548300"></point>
+ <point lat=" 29.62200600" lon="-98.34288300"></point>
+ <point lat=" 29.62830400" lon="-98.34052300"></point>
+ <point lat=" 29.63046600" lon="-98.34097900"></point>
+ <point lat=" 29.63470900" lon="-98.34317800"></point>
+ <point lat=" 29.63935600" lon="-98.34606700"></point>
+ <point lat=" 29.64319500" lon="-98.34760300"></point>
+ <point lat=" 29.64446900" lon="-98.34765900"></point>
+ <point lat=" 29.65047700" lon="-98.34364300"></point>
+ <point lat=" 29.65252900" lon="-98.34283500"></point>
+ <point lat=" 29.65358700" lon="-98.34318700"></point>
+ <point lat=" 29.65451900" lon="-98.34454700"></point>
+ <point lat=" 29.65810500" lon="-98.35610800"></point>
+ <point lat=" 29.65892900" lon="-98.35726000"></point>
+ <point lat=" 29.66188900" lon="-98.35934800"></point>
+ <point lat=" 29.66531300" lon="-98.36099600"></point>
+ <point lat=" 29.66659900" lon="-98.36365200"></point>
+ <point lat=" 29.66373300" lon="-98.37242800"></point>
+ <point lat=" 29.66259900" lon="-98.37871600"></point>
+ <point lat=" 29.67054800" lon="-98.38088400"></point>
+ <point lat=" 29.67440800" lon="-98.38242800"></point>
+ <point lat=" 29.67582400" lon="-98.38399200"></point>
+ <point lat=" 29.67652400" lon="-98.38449300"></point>
+ <point lat=" 29.67857600" lon="-98.38395600"></point>
+ <point lat=" 29.68128200" lon="-98.37813200"></point>
+ <point lat=" 29.68253000" lon="-98.37655600"></point>
+ <point lat=" 29.68465600" lon="-98.37582000"></point>
+ <point lat=" 29.68712400" lon="-98.37589200"></point>
+ <point lat=" 29.69029800" lon="-98.37718800"></point>
+ <point lat=" 29.69310600" lon="-98.37948400"></point>
+ <point lat=" 29.69664100" lon="-98.38061200"></point>
+ <point lat=" 29.70227700" lon="-98.38053200"></point>
+ <point lat=" 29.70543700" lon="-98.37708400"></point>
+ <point lat=" 29.70622300" lon="-98.37479200"></point>
+ <point lat=" 29.70475100" lon="-98.37013200"></point>
+ <point lat=" 29.70595300" lon="-98.36217200"></point>
+ <point lat=" 29.70406700" lon="-98.35864400"></point>
+ <point lat=" 29.70401900" lon="-98.35362000"></point>
+ <point lat=" 29.70829100" lon="-98.34367500"></point>
+ <point lat=" 29.70954700" lon="-98.34208300"></point>
+ <point lat=" 29.71139100" lon="-98.34084300"></point>
+ <point lat=" 29.71774500" lon="-98.33881900"></point>
+ <point lat=" 29.72072700" lon="-98.33855500"></point>
+ <point lat=" 29.72200100" lon="-98.33929100"></point>
+ <point lat=" 29.72624900" lon="-98.34504400"></point>
+ <point lat=" 29.72824000" lon="-98.34977600"></point>
+ <point lat=" 29.72902200" lon="-98.35029200"></point>
+ <point lat=" 29.73214600" lon="-98.35241200"></point>
+ <point lat=" 29.73464600" lon="-98.35306000"></point>
+ <point lat=" 29.73457600" lon="-98.35559600"></point>
+ <point lat=" 29.73283600" lon="-98.35715600"></point>
+ <point lat=" 29.72896000" lon="-98.36022000"></point>
+ <point lat=" 29.72269300" lon="-98.36755600"></point>
+ <point lat=" 29.72089300" lon="-98.37066000"></point>
+ <point lat=" 29.72038700" lon="-98.37544400"></point>
+ <point lat=" 29.72192900" lon="-98.37613200"></point>
+ <point lat=" 29.72350300" lon="-98.37592400"></point>
+ <point lat=" 29.72659200" lon="-98.37361200"></point>
+ <point lat=" 29.72785600" lon="-98.37339600"></point>
+ <point lat=" 29.73175400" lon="-98.37446000"></point>
+ <point lat=" 29.73541600" lon="-98.38338900"></point>
+ <point lat=" 29.73504800" lon="-98.38599700"></point>
+ <point lat=" 29.73788800" lon="-98.39769300"></point>
+ <point lat=" 29.73898600" lon="-98.39989300"></point>
+ <point lat=" 29.73995000" lon="-98.39989300"></point>
+ <point lat=" 29.74200000" lon="-98.39854900"></point>
+ <point lat=" 29.74310400" lon="-98.39855700"></point>
+ <point lat=" 29.74942000" lon="-98.40318100"></point>
+ <point lat=" 29.74935600" lon="-98.40726100"></point>
+ <point lat=" 29.74814400" lon="-98.41116000"></point>
+ <point lat=" 29.74719800" lon="-98.41603000"></point>
+ <point lat=" 29.74542600" lon="-98.41925400"></point>
+ <point lat=" 29.74317200" lon="-98.42161400"></point>
+ <point lat=" 29.74012200" lon="-98.42209400"></point>
+ <point lat=" 29.73480400" lon="-98.42118200"></point>
+ <point lat=" 29.73354000" lon="-98.41981400"></point>
+ <point lat=" 29.72942800" lon="-98.42031800"></point>
+ <point lat=" 29.72678800" lon="-98.42706200"></point>
+ <point lat=" 29.72436400" lon="-98.43004600"></point>
+ <point lat=" 29.72356200" lon="-98.43043000"></point>
+ <point lat=" 29.72258000" lon="-98.43009400"></point>
+ <point lat=" 29.72044700" lon="-98.42801400"></point>
+ <point lat=" 29.71869500" lon="-98.42725400"></point>
+ <point lat=" 29.71742100" lon="-98.42781400"></point>
+ <point lat=" 29.71587500" lon="-98.43186200"></point>
+ <point lat=" 29.71639900" lon="-98.43965400"></point>
+ <point lat=" 29.71697100" lon="-98.44139800"></point>
+ <point lat=" 29.71962200" lon="-98.44409400"></point>
+ <point lat=" 29.72461000" lon="-98.44501400"></point>
+ <point lat=" 29.72697000" lon="-98.44475000"></point>
+ <point lat=" 29.73273400" lon="-98.44299000"></point>
+ <point lat=" 29.73483400" lon="-98.44403800"></point>
+ <point lat=" 29.73613600" lon="-98.44600600"></point>
+ <point lat=" 29.73614800" lon="-98.44888600"></point>
+ <point lat=" 29.73500600" lon="-98.45163100"></point>
+ <point lat=" 29.73332600" lon="-98.45357500"></point>
+ <point lat=" 29.73236600" lon="-98.45819900"></point>
+ <point lat=" 29.73262600" lon="-98.45953500"></point>
+ <point lat=" 29.73442200" lon="-98.46249500"></point>
+ <point lat=" 29.73810000" lon="-98.46487100"></point>
+ <point lat=" 29.73894000" lon="-98.46615100"></point>
+ <point lat=" 29.73716400" lon="-98.47187900"></point>
+ <point lat=" 29.73467000" lon="-98.47512700"></point>
+ <point lat=" 29.73430800" lon="-98.47759900"></point>
+ <point lat=" 29.73574200" lon="-98.48799200"></point>
+ <point lat=" 29.74028800" lon="-98.50809600"></point>
+ <point lat=" 29.74252100" lon="-98.51429600"></point>
+ <point lat=" 29.74468100" lon="-98.51958400"></point>
+ <point lat=" 29.74501900" lon="-98.52326500"></point>
+ <point lat=" 29.74336700" lon="-98.52591300"></point>
+ <point lat=" 29.74048900" lon="-98.52512900"></point>
+ <point lat=" 29.74019000" lon="-98.52652100"></point>
+ <point lat=" 29.74562300" lon="-98.53147300"></point>
+ <point lat=" 29.74889100" lon="-98.53344900"></point>
+ <point lat=" 29.75226000" lon="-98.53402900"></point>
+ <point lat=" 29.75304000" lon="-98.53568600"></point>
+ <point lat=" 29.75162000" lon="-98.54102000"></point>
+ <point lat=" 29.75352300" lon="-98.54690400"></point>
+ <point lat=" 29.75432600" lon="-98.54774500"></point>
+ <point lat=" 29.75532700" lon="-98.54785000"></point>
+ <point lat=" 29.75689300" lon="-98.54687700"></point>
+ <point lat=" 29.75822300" lon="-98.54674600"></point>
+ <point lat=" 29.75939200" lon="-98.54719200"></point>
+ <point lat=" 29.76037800" lon="-98.54871600"></point>
+ <point lat=" 29.76056100" lon="-98.55181700"></point>
+ <point lat=" 29.75923200" lon="-98.55486400"></point>
+ <point lat=" 29.75804000" lon="-98.55523200"></point>
+ <point lat=" 29.75577100" lon="-98.55494300"></point>
+ <point lat=" 29.75478500" lon="-98.55544300"></point>
+ <point lat=" 29.75178200" lon="-98.55870000"></point>
+ <point lat=" 29.75141500" lon="-98.56195800"></point>
+ <point lat=" 29.75228600" lon="-98.56298200"></point>
+ <point lat=" 29.75251600" lon="-98.56595100"></point>
+ <point lat=" 29.75219500" lon="-98.56652900"></point>
+ <point lat=" 29.74826700" lon="-98.56881000"></point>
+ <point lat=" 29.75022100" lon="-98.57369800"></point>
+ <point lat=" 29.74928100" lon="-98.57573300"></point>
+ <point lat=" 29.74727500" lon="-98.57623400"></point>
+ <point lat=" 29.74343900" lon="-98.57935400"></point>
+ <point lat=" 29.74128700" lon="-98.58349000"></point>
+ <point lat=" 29.74229500" lon="-98.58636200"></point>
+ <point lat=" 29.74667900" lon="-98.58768200"></point>
+ <point lat=" 29.74764700" lon="-98.58841000"></point>
+ <point lat=" 29.74794500" lon="-98.58913800"></point>
+ <point lat=" 29.74706500" lon="-98.59212300"></point>
+ <point lat=" 29.74580900" lon="-98.59335500"></point>
+ <point lat=" 29.74739700" lon="-98.59684300"></point>
+ <point lat=" 29.74975900" lon="-98.59977900"></point>
+ <point lat=" 29.74976700" lon="-98.60259500"></point>
+ <point lat=" 29.74880900" lon="-98.60397100"></point>
+ <point lat=" 29.74720100" lon="-98.60462700"></point>
+ <point lat=" 29.74412300" lon="-98.60055500"></point>
+ <point lat=" 29.74263700" lon="-98.60037100"></point>
+ <point lat=" 29.74138300" lon="-98.60101100"></point>
+ <point lat=" 29.74000500" lon="-98.60333900"></point>
+ <point lat=" 29.74051300" lon="-98.60813100"></point>
+ <point lat=" 29.74012100" lon="-98.61159900"></point>
+ <point lat=" 29.73816300" lon="-98.61318700"></point>
+ <point lat=" 29.73766700" lon="-98.61451500"></point>
+ <point lat=" 29.73958900" lon="-98.61737900"></point>
+ <point lat=" 29.74221900" lon="-98.61705100"></point>
+ <point lat=" 29.74395500" lon="-98.61764300"></point>
+ <point lat=" 29.74412100" lon="-98.62339900"></point>
+ <point lat=" 29.74414200" lon="-98.62339900"></point>
+ <point lat=" 29.74435000" lon="-98.62510300"></point>
+ <point lat=" 29.74425300" lon="-98.62825100"></point>
+ <point lat=" 29.74198600" lon="-98.63274400"></point>
+ <point lat=" 29.74022400" lon="-98.64125500"></point>
+ <point lat=" 29.74050000" lon="-98.64364500"></point>
+ <point lat=" 29.74109600" lon="-98.64445900"></point>
+ <point lat=" 29.74267800" lon="-98.64566700"></point>
+ <point lat=" 29.74459500" lon="-98.64604300"></point>
+ <point lat=" 29.74529800" lon="-98.64612900"></point>
+ <point lat=" 29.74558900" lon="-98.64579700"></point>
+ <point lat=" 29.74716800" lon="-98.64387900"></point>
+ <point lat=" 29.74780600" lon="-98.64311600"></point>
+ <point lat=" 29.74790600" lon="-98.64299600"></point>
+ <point lat=" 29.75107700" lon="-98.63915400"></point>
+ <point lat=" 29.75289800" lon="-98.63688000"></point>
+ <point lat=" 29.75644000" lon="-98.63245800"></point>
+ <point lat=" 29.76382500" lon="-98.62328100"></point>
+ <point lat=" 29.76409300" lon="-98.62295500"></point>
+ <point lat=" 29.76637000" lon="-98.62016900"></point>
+ <point lat=" 29.77045200" lon="-98.61510800"></point>
+ <point lat=" 29.80907200" lon="-98.56748100"></point>
+ <point lat=" 29.81068200" lon="-98.56550800"></point>
+ <point lat=" 29.81541200" lon="-98.55972100"></point>
+ <point lat=" 29.81884500" lon="-98.55552900"></point>
+ <point lat=" 29.82464600" lon="-98.54844500"></point>
+ <point lat=" 29.82761900" lon="-98.54481400"></point>
+ <point lat=" 29.83376100" lon="-98.53731600"></point>
+ <point lat=" 29.86397200" lon="-98.50029700"></point>
+ <point lat=" 29.86602300" lon="-98.49784800"></point>
+ <point lat=" 29.87609100" lon="-98.48584600"></point>
+ <point lat=" 29.93755700" lon="-98.41401800"></point>
+ <point lat=" 29.94064600" lon="-98.41045700"></point>
+ <point lat=" 29.94386800" lon="-98.40669500"></point>
+ <point lat=" 29.94437300" lon="-98.40610700"></point>
+</line>
+
+</gmap>
