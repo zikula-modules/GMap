@@ -38,7 +38,7 @@
 
       <div id="legendcontainer" style="margin:auto">
       <form name="legend" action="">
-      <!--[if $pncore.gmap.legendmarkershow]-->      
+      <!--[if $pncore.gmap.legendmarkershow]--><!--[* Fixes ticket:6 *]-->
           <!--[* $numCols is the number of columns *]-->
           <!--[assign var="numCols" value=$pncore.gmap.legendmarkercolumns]-->
           <table id="legendtablemarker" >
@@ -110,7 +110,7 @@
       </form>
       </div>
 
-      <!--[* Fixes Ticket #2 *]-->
+      <!--[* Fixes ticket:2 *]-->
       <!--[if $pncore.gmap.showsearch]-->      
       <form action="#" onsubmit="showAddress(this.address.value); return false">
           <p> <!--[pnml name='_GM_SEARCH']-->

@@ -80,7 +80,7 @@
         thismarker.list[i].marker.openInfoWindowHtml(thismarker.list[i].popup, { maxWidth: infowidth });
     }
 
-    function showhidemarkers(markertype, markername, show ) { // Fixes Ticket #6
+    function showhidemarkers(markertype, markername, show ) { // Fixes ticket:6
       var thismarker = setmarkertype(markertype);
       if (markername === true || markername === false || markername === null) {
           markername = false;  // no single marker name, do them all
@@ -146,7 +146,7 @@
         }
     }
 
-    function showAddress(address) {   // Fixes Ticket #2
+    function showAddress(address) {   // Fixes ticket:2
         if (geocoder) {
             geocoder.getLatLng( address, function(point) {
                                              if (!point) {
@@ -185,7 +185,7 @@
         content += '<br /><br />';
         content += '<\/form><\/div>';
 
-        var icon = new GIcon(); // Fixes Ticket #1
+        var icon = new GIcon(); // Fixes ticket:1
         icon.image  = markerinfo.iconpath + firstmarker;
         icon.shadow = markerinfo.iconpath + markerinfo.shadowicon;
         icon.iconSize         = new GSize( markerinfo.iconSizeWidth,     markerinfo.iconSizeHeight);
@@ -195,11 +195,11 @@
 
         NewMarker =  new GMarker(point, {icon:icon, draggable: true});
         NewMarker.bindInfoWindowHtml(content,{ maxWidth: infowidth });
-        NewMarker.enableDragging(); // Fixes Ticket #1
+        NewMarker.enableDragging(); // Fixes ticket:1
         map.addOverlay(NewMarker);
         NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
 
-        GEvent.addListener(NewMarker, "dragend", function() {  // Fixes Ticket #1
+        GEvent.addListener(NewMarker, "dragend", function() {  // Fixes ticket:1
             var place = NewMarker.getPoint();
             map.panTo(new GLatLng(place.lat(), place.lng()));
             NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
@@ -207,7 +207,7 @@
             document.getElementById("markerlat").value = place.lat();
             document.getElementById("markerlng").value = place.lng ();
         });
-        GEvent.addListener(NewMarker, "infowindowclose", function() { // Fixes Ticket #1
+        GEvent.addListener(NewMarker, "infowindowclose", function() { // Fixes ticket:1
               map.removeOverlay(NewMarker);
         });
     }
@@ -244,7 +244,7 @@
         content += '<br /><br />';
         content += '<\/form><\/div>';
 
-        var icon = new GIcon(); // Fixes Ticket #1
+        var icon = new GIcon(); // Fixes ticket:1
         icon.image  = specialinfo.iconpath + firstmarker;
         icon.shadow = specialinfo.iconpath + specialinfo.shadowicon;
         icon.iconSize         = new GSize( specialinfo.iconSizeWidth,     specialinfo.iconSizeHeight);
@@ -254,11 +254,11 @@
         
         NewMarker =  new GMarker(point, {icon:icon, draggable: true});
         NewMarker.bindInfoWindowHtml(content,{ maxWidth: infowidth });	
-        NewMarker.enableDragging(); // Fixes Ticket #1
+        NewMarker.enableDragging(); // Fixes ticket:1
         map.addOverlay(NewMarker);
         NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
 
-        GEvent.addListener(NewMarker, "dragend", function() {  // Fixes Ticket #1
+        GEvent.addListener(NewMarker, "dragend", function() {  // Fixes ticket:1
             var place = NewMarker.getPoint();
             map.panTo(new GLatLng(place.lat(), place.lng()));
             NewMarker.openInfoWindowHtml(content, { maxWidth: infowidth });
@@ -266,7 +266,7 @@
             document.getElementById("markerlat").value = place.lat();
             document.getElementById("markerlng").value = place.lng ();
         });
-        GEvent.addListener(NewMarker, "infowindowclose", function() { // Fixes Ticket #1
+        GEvent.addListener(NewMarker, "infowindowclose", function() { // Fixes ticket:1
               map.removeOverlay(NewMarker);
         });
     }
@@ -314,7 +314,7 @@
         <!--[/foreach]-->
 
         <!--[if $gmapfile !="" ]-->
-        GetMarkersFromFile('<!--[$gmapfile|pnvarprepfordisplay]-->'); // Fixes Ticket #4
+        GetMarkersFromFile('<!--[$gmapfile|pnvarprepfordisplay]-->'); // Fixes ticket:4
         <!--[/if]-->
 
         markerinfo.sidebarhead  += '<li><a href="javascript:showhidemarkers(\'' + markerinfo.type  + '\')" title="<!--[pnml name="_GM_SHOWHIDEUSERS"]-->"><!--[pnimg src="showhideusers.png" alt="_GM_SHOWHIDEUSERS" altml=true]--><\/a><\/li>';
@@ -374,7 +374,7 @@
     }
 
     <!--[if $gmapfile !="" ]-->
-    function GetMarkersFromFile(xmlfile){
+    function GetMarkersFromFile(xmlfile){ // Fixes ticket:4
         GDownloadUrl(xmlfile, function(data, responseCode) {
             if(responseCode == 200) {
                var xml = GXml.parse(data);
@@ -457,7 +457,7 @@
                <!--[/if]-->
 
                // Process all the lines
-	       // Fixes Ticket #5
+	       // Fixes ticket:5
                var lines = xml.documentElement.getElementsByTagName("line");
                for (var a = 0; a < lines.length; a++) {
                   // get any line attributes
