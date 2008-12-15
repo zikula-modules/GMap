@@ -103,3 +103,87 @@ function gmap_userapi_update($args)
     return true;
 }
 
+/**
+ * form custom url string
+ *
+ * @return string custom url string
+ */
+function gmap_userapi_encodeurl($args)
+{
+    // check we have the required input
+    if (!isset($args['modname']) || !isset($args['func']) || !isset($args['args'])) {
+        return LogUtil::registerError (_MODARGSERROR);
+    }
+
+    if (!isset($args['type'])) {
+        $args['type'] = 'user';
+    }
+
+    // don't display the function name if using main
+    if ($args['func'] == 'main') {
+        $args['func'] = '';
+    }
+
+    // create an empty string to start
+    $vars = '';
+
+    // Now add the rest of the arguments
+    foreach ($args['args'] as $k => $v) {
+        if (is_array($v)) {
+            foreach ($v as $k2 => $w) {
+                if ($w != '') {
+                    $vars .= "/$k[$k2]/$w"; // &$k[$k2]=$w
+                }
+            }
+        } elseif ($v != '') {
+            $vars .= "/$k/$v"; // &$k=$v
+        }
+    }
+
+    // construct the custom url part
+    if (empty($args['func']) && empty($vars)) {
+        return $args['modname'] . '/';
+    } elseif (empty($args['func'])) {
+        return $args['modname'] . '/' . $vars . '/';
+    } elseif (empty($vars)) {
+        return $args['modname'] . '/' . $args['func'] . '/';
+    } else {
+        return $args['modname'] . '/' . $args['func'] . '/' . $vars . '/';
+    }
+}
+
+/**
+ * decode the custom url string
+ *
+ * @return bool true if successful, false otherwise
+ */
+function gmap_userapi_decodeurl($args)
+{
+    // check we actually have some vars to work with...
+    if (!isset($args['vars'])) {
+        return LogUtil::registerError (_MODARGSERROR);
+    }
+
+    // define the available user functions
+    $funcs = array('main', 'edit', 'update');
+    // set the correct function name based on our input
+    if (empty($args['vars'][2])) {
+        pnQueryStringSetVar('func', 'main');
+    } elseif (!in_array($args['vars'][2], $funcs)) {
+        pnQueryStringSetVar('func', 'main');
+        $nextvar = 2;
+    } else {
+        pnQueryStringSetVar('func', $args['vars'][2]);
+        $nextvar = 3;
+    }
+
+    // Now just need to expand out the remaining parameters
+    $argscount = count($args['vars']);
+    for ($i = $nextvar; $i < $argscount; $i = $i + 2) {
+        if (isset($args['vars'][$i])){
+            pnQueryStringSetVar($args['vars'][$i], urldecode($args['vars'][$i+1]));
+        }
+    }
+
+    return true;
+}

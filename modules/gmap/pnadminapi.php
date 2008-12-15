@@ -155,6 +155,7 @@ function gmap_adminapi_getlinks()
     if (SecurityUtil::checkPermission('gmap::', '::', ACCESS_ADMIN)) {
         $links[] = array('url' => pnModURL('gmap', 'admin', 'main'),    'text' => _GM_ADMIN_TITLE_MARKERS);
         $links[] = array('url' => pnModURL('gmap', 'admin', 'config'),  'text' => _GM_ADMIN_TITLE_MAPSETTINGS);
+        $links[] = array('url' => pnModURL('gmap', 'admin', 'editmaps'),'text' => _GM_ADMIN_TITLE_EDITMAPS);
         $links[] = array('url' => pnModURL('gmap', 'admin', 'editpins'),'text' => _GM_ADMIN_TITLE_EDITPINS);
         $links[] = array('url' => pnModURL('gmap', 'admin', 'readpins'),'text' => _GM_ADMIN_TITLE_READPINSFROMFILESYSTEM);
     }

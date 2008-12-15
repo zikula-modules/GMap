@@ -1,6 +1,19 @@
 <gmap>
 
-<map title="Comal County, Texas" lat="29.810859" lon="-98.301544" zoom="10"/>
+<map title="Places in Comal County, Texas (Partial List)" lat="29.810859" lon="-98.301544" zoom="10">
+  <information>
+     This is an example map file.
+     &amp;lt;blockquote&amp;gt;
+     &amp;lt;strong&amp;gt;Disclaimer:&amp;lt;/strong&amp;gt;
+     The mapped locations and lines have limitations on accuracy.  Some are very accurate while others can be 100&amp;apos;s to 1000&amp;apos;s of feet off.  Please use as general guidance only.
+     &amp;lt;/blockquote&amp;gt;
+     Comal County boundary obtained from the &amp;lt;a target=&amp;quot;_blank&amp;quot; href=&amp;quot;http://www.census.gov/geo/www/cob/bdy_files.html&amp;quot; &amp;gt;U.S. Census Bureau Cartographic Boundary Files&amp;lt;/a&amp;gt;.
+     &amp;lt;br /&amp;gt;
+     Comal County points of interest obtained from the &amp;lt;a target=&amp;quot;_blank&amp;quot; href=&amp;quot;http://geonames.usgs.gov/pls/gnispublic/&amp;quot;&amp;gt;USGS Geographic Names Information System (GNIS)&amp;lt;/a&amp;gt;.
+     &amp;lt;br /&amp;gt;
+     Comal County Historical Markers obtained from the &amp;lt;a target=&amp;quot;_blank&amp;quot; href=&amp;quot;http://atlas.thc.state.tx.us/&amp;quot;&amp;gt;Texas Historical Commission&amp;apos;s Texas Historic Sites Atlas&amp;lt;/a&amp;gt;. 
+  </information>
+</map>
 
 <icon type="1"  image="mm_20_blue.png"    show="1" checked="1" title="Water Features" />
 <icon type="2"  image="mm_20_grey.png"    show="1" checked="1" title="Communities" />

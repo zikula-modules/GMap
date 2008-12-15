@@ -9,22 +9,30 @@
 
 GMAP Zikula MODULE
 -------------------------
-2.2 - New Features
-        - Side Bar split into User Marker and Special Marker sections.  
-	  Each can be individually enabled/disabled and each has a maximum height (using scroll bars)
-	- Added ability to enable/disable each Marker icon and give it a Name
+2.2 * NEW FEATURES:
+    - Side Bar split into User Marker and Special Marker sections.  
+	      - Each can be individually enabled/disabled and each has a maximum height (using scroll bars)
+	- Added ability to enable/disable each Marker icon and give it a Name (instead of using icon file name)
+	- All Marker selection input now uses the marker name instead of the marker file name
 	- Added ability to display a legend for the Markers.  Each marker type is show with a icon,
 	  the Marker icon name, and a check box to display or hide all the Markers of that type on
 	  the map and on the side bar.
-	- All Marker selection input now uses the marker name instead of the marker file name
-	- When adding a Marker, the marker can be dragged to a new location and the coordinates are updated
 	- Show/Hide for Users and Specials also toggles the check boxes in the legend.
-	- Added the ability to load a map from a file.  The map title, zoom level, and coordinates can be given.
-	  Also can change the names of markers, which markers are enabled/shown, which are checked.
-	  Can add Special Markers and Lines to the map.
-      Code
-        - Major restructuring of javascript in pntemplates/gmap_user_mapjs.html
-	- Updates to several templates, adding IDs, for direct reference.
+    - Added a map information section where additional text/html can be displayed
+	- When adding a Marker, the marker can be dragged to a new location and the coordinates are updated
+	- Added the ability to load maps from xml files.
+         - The map title, zoom level, information, and coordinates can be given.
+	     - Also can change the names of markers, which markers are enabled/shown, which are checked.
+	     - Can add Special Markers and Lines to the map.
+         - Can assign map files to a map label.  Maps can be called using the new &map=<label> parameter
+         - Can also call a default map file
+	 - Added "Loading Map..." for title while map files are being processed
+	 - Added two example map files in the pndocs directory (these can be used for demos)
+    - Added support for directory style short URLs
+
+    * CODE: 
+    - Major restructuring of javascript in pntemplates/gmap_user_mapjs.html
+	- Updates to several templates, adding IDs, for direct reference for CSS and data updates via javascript.
 	- Updates to administration to accomodate the new features.
 	- Updated the help file
 

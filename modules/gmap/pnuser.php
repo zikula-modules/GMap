@@ -7,7 +7,7 @@
  * @version $Id$
  * @license GNU/GPL - http://www.gnu.org/copyleft/gpl.html
  *
- * @version $Id:$
+ * @version $Id$
  */
 
 /**
@@ -23,7 +23,7 @@ function gmap_user_main()
 
     $googlekey = pnModGetVar('gmap', 'googlekey', '');
     if (empty($googlekey)) {
-        return LogUtil::registerError(_GM_NOGOOGLEKEYINSTALLED);
+        return LogUtil::registerError(_GM_NOGOOGLEKEY);
     }
 
     $pnRender = pnRender::getInstance('gmap', false, null, true);
@@ -41,10 +41,24 @@ function gmap_user_main()
 
     $markers        = pnModAPIFunc('gmap', 'user', 'getall');
     $specials       = pnModAPIFunc('gmap', 'user', 'getall', array('special' => true));
-    
-    $gmapfile = pnModGetVar('gmap', 'gmapfile');
+       
+    // Load a map from a file
+    $gmapfile = pnModGetVar('gmap', 'gmapfile'); // default map
     if (!file_exists($gmapfile) ) {
         $gmapfile = "";
+    }
+    // User requested
+    $map = FormUtil::getPassedValue('map', false, 'GET');
+    if ($map) {
+        $maplist = pnModGetVar('gmap', 'maplist');
+        if (is_array($maplist)) {
+            $map = strtolower($map);
+            if (array_key_exists($map, $maplist)) {
+                if (file_exists($maplist[$map]) ){
+                    $gmapfile = $maplist[$map];
+                }
+            }
+        }
     }
 
     $pnRender->assign('ismapped',      pnModAPIFunc('gmap', 'user', 'ismapped'));

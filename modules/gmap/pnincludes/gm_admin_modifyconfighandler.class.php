@@ -32,11 +32,9 @@ class gmap_admin_modifyconfighandler
         for ($x = 0; $x < 20; $x++) {
             $zoomlevels[] = array('text' => $x, 'value' => $x);
         }
-        $basedirectory = dirname(dirname(dirname(dirname(realpath(__FILE__))))) . "/";
 
         $pnRender->assign('maptypes',      $maptypes);
         $pnRender->assign('zoomlevels',    $zoomlevels);
-        $pnRender->assign('basedirectory', $basedirectory);
 
         return true;
     }
@@ -87,8 +85,9 @@ class gmap_admin_modifyconfighandler
             pnModSetVar('gmap', 'legendmarkercolumns',  $data['legendmarkercolumns']);           
             pnModSetVar('gmap', 'legendspecialshow',    $data['legendspecialshow']);
             pnModSetVar('gmap', 'legendspecialcolumns', $data['legendspecialcolumns']);
-            pnModSetVar('gmap', 'gmapfile',             $data['gmapfile']);       // Closes Ticket #4
-            pnModSetVar('gmap', 'showsearch',           $data['showsearch']);     // Closes Ticket #2       
+            pnModSetVar('gmap', 'showsearch',           $data['showsearch']);     // Closes Ticket #2
+            pnModSetVar('gmap', 'information',          $data['information']);    // Closes Ticket #8
+            pnModSetVar('gmap', 'overviewmap',          $data['overviewmap']);    // Closes Ticket #8
         }
         return true;
     }

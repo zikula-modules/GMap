@@ -1,0 +1,52 @@
+<!--[*  $Id$  *]-->
+<!--[include file="gmap_admin_menu.html"]-->
+
+<h2><!--[pnml name="_GM_ADMIN_TITLE_EDITMAPS"]--></h2>
+<div class="pn-informationmsg"><!--[pnml name="_GM_ADMIN_MAP_HINT"]--><br /><strong><!--[ $basedirectory ]--></strong></div>
+<form class="pn-adminform" action="<!--[pnmodurl modname="gmap" type="admin" func="editmaps"]-->" method="post" enctype="application/x-www-form-urlencoded">
+<div>
+    <input type="hidden" name="authid" value="<!--[pnsecgenauthkey module="gmap"]-->" />
+    <fieldset>
+        <legend><!--[pnml name="_GM_ADMIN_DEFAULTMAP"]--></legend>
+        <dl class="gmclearfix">
+            <dt><!--[pnml name="_GM_FILENAME"]--></dt>
+            <dd><input type="text" name="gmapfile" value="<!--[$pncore.gmap.gmapfile|pnvarprepfordisplay ]-->" size="60" maxlength="100" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend><!--[pnml name="_GM_ADMIN_EDITMAPS"]--></legend>
+        <table class="pn-admintable">
+        <thead>
+            <tr>
+                <th class="gmap_tablehead"><!--[pnml name="_GM_ADMIN_MAPTABLE_NAME"]--></th>
+                <th class="gmap_tablehead"><!--[pnml name="_GM_ADMIN_PINTABLE_FILENAME"]--></th>
+                <th class="gmap_tablehead"><!--[pnml name="_GM_ADMIN_PINTABLE_DELETE"]--></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--[foreach from=$maplist key=mapname item=mapfile]-->
+            <tr class="<!--[cycle values=pn-odd,pn-even]-->">
+                <td><input type="text" name="name[]"     value="<!--[$mapname|pnvarprepfordisplay]-->" size="10" maxlength="20" /></td>
+                <td><input type="text" name="filename[]" value="<!--[$mapfile|pnvarprepfordisplay]-->" size="60" maxlength="100" /></td>
+                <td><input type="checkbox" name="delete[]" value="<!--[$mapname]-->" /></td>
+            </tr>
+            <!--[/foreach]-->
+            <!--[section name=extrainput loop=5]-->
+            <tr class="<!--[cycle values=pn-odd,pn-even]-->">
+                <td><input type="text" name="name[]"     value="" size="10" maxlength="20" /></td>
+                <td><input type="text" name="filename[]" value="" size="60" maxlength="100" /></td>
+                <td><!--[pnml name="_GM_ADMIN_PINTABLE_ADD"]--></td>
+            </tr>
+            <!--[/section]-->
+        </tbody>
+        </table>
+    </fieldset>
+
+    <div class="pn-adminformrow pn-adminformbuttons">
+    <input name="submit" type="submit" value="<!--[pnml name="_GM_ADMIN_BTN_SUBMIT"]-->" />
+    </div>
+</div>
+</form>
+
+<!--[include file="gmap_admin_footer.html"]-->

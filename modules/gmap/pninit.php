@@ -35,6 +35,11 @@ function gmap_init()
     pnModSetVar('gmap', 'legendspecialcolumns', 4);
     pnModSetVar('gmap', 'gmapfile',             '');       // Closes Ticket #4
     pnModSetVar('gmap', 'showsearch',           0);        // Closes Ticket #2
+    pnModSetVar('gmap', 'overviewmap',         '1');
+    pnModSetVar('gmap', 'information',          '');
+    pnModSetVar('gmap', 'maplist',             array( 'example'  => 'modules/gmap/pndocs/Example.xml',
+                                                      'example2' => 'modules/gmap/pndocs/Example2.xml'
+                                                    ));
     
     // Set specialpinlist and markerpinlist
     pnModAPILoad('gmap', 'admin', true);    
@@ -71,6 +76,11 @@ function gmap_upgrade($oldversion)
             pnModSetVar('gmap', 'legendspecialcolumns', 4);
             pnModSetVar('gmap', 'gmapfile',             '');       // Closes Ticket #4
             pnModSetVar('gmap', 'showsearch',           0);        // Closes Ticket #2
+            pnModSetVar('gmap', 'overviewmap',         '1');
+            pnModSetVar('gmap', 'information',          '');
+            pnModSetVar('gmap', 'maplist',              array( 'example'  => 'modules/gmap/pndocs/Example.xml',
+                                                               'example2' => 'modules/gmap/pndocs/Example2.xml'
+                                                              ));
             
             // Set specialpinlist and markerpinlist
             pnModAPILoad('gmap', 'admin', true);

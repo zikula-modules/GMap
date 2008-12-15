@@ -23,11 +23,6 @@ MAP SETTINGS
   - Fill in your Google API Key (see http://www.google.com/apis/maps/)
     NOTE: this must be done for a map to be displayed
   - Add your values for your default Google Map (Latitude, Longitude, Map Type, Zoom Level, and size)
-  - If you would like to load map information from a file, give a filename to load.
-    For an example, you can load "modules/gmap/pndocs/Example.xml"
-    Also see this file for an example on how you can create other map files.  These files can update the
-    map title, location, zoom level and the pin labels.  Values in the file will over ride default values set in
-    the gmap administration.
 
   "Side Bar Display"
   - Set the width of the side bar.  Note: the width of the map and the width of the side bar must be able
@@ -47,6 +42,33 @@ MAP SETTINGS
   - To show an Address search form at the bottom of the map, enable it.  This will allow your people to type in
     and address and have the map re-centered on the new location.
     
+  "Map Information"
+  This is optional HTML text that will be displayed at the bottom of the map page.
+
+
+MAP FILES
+  - If you would like to load map information from a file, give a filename to load.
+    For an example, you can load "modules/gmap/pndocs/Example.xml"
+    
+  - You can also specify other map files that will load with the optional 'map' parameter.
+    Just give the map name and the associated file to be loaded.
+    For example, if you give a map name of "example" and give it the file name "modules/gmap/pndocs/Example.xml"
+    then the URL
+    http://yoursite.com/index.php?module=gmap&map=example 
+    will display the example map file.
+
+    Also see Example.xml for an example on how you can create map files.  These files can update the
+    map title, location, zoom level and the pin labels.  Values in the file will over ride default values set in
+    the gmap administration.
+    NOTE: Any text needs to be encoded in the file
+        +--------------+-----------+----------+------------+------------+
+        |  symbol      |    <      |    >     |     "      |      '     |
+	+--------------+-----------+----------+------------+------------+
+        | use instead  | &amp;lt;  | &amp;gt; | &amp;quot; | &amp;apos; |
+        |  or use      | &amp;#60; | &amp;#62;| &amp;#34;  | &amp;#39   |
+        +--------------+-----------+----------+------------+------------+   
+
+
 MARKER SETTINGS
 - In the GMap administration, go to "Marker Settings"
   This area has two sections.  One for Special Markers and one for User Markers.

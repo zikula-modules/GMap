@@ -156,7 +156,7 @@ function gmap_admin_delete()
                 return LogUtil::registerError(_GM_ERRORDELETINGMARKER, null, pnModURL('gmap', 'admin', 'main'));
             }
         } else {
-            return LogUtil::registerError(_GM_MUSTCONFIRM, null, pnModURL('gmap', 'admin', 'deletemarker', array('mid' => $mid)));
+            return LogUtil::registerError(_GM_MUSTCONFIRM, null, pnModURL('gmap', 'admin', 'delete', array('mid' => $mid)));
         }
     }
 
@@ -260,4 +260,54 @@ function gmap_admin_editpins() {
 
    LogUtil::registerStatus(_GM_ADMIN_EDITEDPINSSAVED);
    return pnRedirect(pnModURL('gmap', 'admin', 'editpins'));
+}
+
+
+/**
+ * editmaps
+ *
+ *
+ */
+function gmap_admin_editmaps() {
+
+    if (!SecurityUtil::checkPermission('gmap::', '::', ACCESS_ADMIN)) {
+        return LogUtil::registerPermissionError(pnConfigGetVar('entrypoint', 'index.php'));
+    }
+
+    $submit = FormUtil::getPassedValue('submit', null, 'POST');
+
+    if(!$submit) {
+
+        $maplist = pnModGetVar('gmap','maplist');
+        $basedirectory = dirname(dirname(dirname(dirname(realpath(__FILE__))))) . "/";
+ 
+        $pnr = pnRender::getInstance('gmap', false, null, true); 
+        $pnr->assign('maplist',$maplist);
+        $pnr->assign('basedirectory',$basedirectory);
+        return $pnr->fetch('gmap_admin_editmaps.html');
+    }
+    // submit is set
+    // Get input
+    $gmapfile  = FormUtil::getPassedValue('gmapfile', "", 'POST');
+    $names     = FormUtil::getPassedValue('name',     array(), 'POST');
+    $filenames = FormUtil::getPassedValue('filename', array(), 'POST');
+    $delete    = FormUtil::getPassedValue('delete',   array(), 'POST');
+    
+    $maplist = array();
+    for($i = 0; $i < sizeof($names); $i++) {
+        if ( $names[$i] ) {
+            $maplist[$names[$i]] = $filenames[$i];
+        }
+    }
+            
+    // Deletions
+    for ($i = 0; $i < sizeof($delete); $i++) {
+  	    unset($maplist[$delete[$i]]);
+    }
+
+   pnModSetVar('gmap','maplist',  $maplist);
+   pnModSetVar('gmap','gmapfile', $gmapfile);       // Closes Ticket #4
+
+   LogUtil::registerStatus(_GM_ADMIN_EDITEDMAPSSSAVED);
+   return pnRedirect(pnModURL('gmap', 'admin', 'editmaps'));
 }

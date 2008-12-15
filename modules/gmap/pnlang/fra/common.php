@@ -55,6 +55,7 @@ define('_GM_USERMARKERS',              'Marqueurs Membres');
 define('_GM_ZOOMIN',                   'Zoom Avant');
 define('_GM_ZOOMOUT',                  'Zoom Arrière');
 
+// These need to be translated.  Afterwards, please alpha sort with the other defines
 define('_GM_SEARCHGO',                 'Search');    // Fixes Ticket #2
 define('_GM_SEARCH',                   'Address:');  // Fixes Ticket #2
 define('_GM_SEARCHSHOW',               'Show Address Search form'); // Fixes Ticket #2
@@ -93,3 +94,14 @@ define('_GM_SPECIAL_SHOW',             'Show Pin');
 define('_GM_SPECIAL_PIN',              'Pin');
 define('_GM_SPECIAL_LABEL',            'Pin Label');
 define('_GM_EDIT',                     'Edit');
+define('_GM_ADMIN_TITLE_EDITMAPS',      'Map Files');
+define('_GM_ADMIN_MAP_HINT',            'Map files allow sets of markers and lines to be defined in a separate file. Each file can be called by adding the option &map=<mapname>. The path and filename are relative to: ');
+define('_GM_ADMIN_DEFAULTMAP',          'Default Map');
+define('_GM_ADMIN_EDITMAPS',            'Other Maps');
+define('_GM_ADMIN_MAPTABLE_NAME',       'Map name');
+define('_GM_ADMIN_MAPTABLE_FILENAME',   'File');
+define('_GM_ADMIN_PINTABLE_DELETE',     'Delete');
+define('_GM_ADMIN_PINTABLE_ADD',        'Add');
+define('_GM_FIELD_INFORMATION',         'Map Information (HTML Text)');
+define('_GM_OVERVIEWMAP',               'Display Overview Map');
+define('_GM_LOADING',                   'Loading Map...');

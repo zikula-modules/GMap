@@ -6,13 +6,13 @@
   <div>
     <div class="gmfloatbox">
         <!--[ pnformvalidationsummary ]-->
-	
-	<fieldset><legend><!--[pnml name=_GM_FIELD_MAP]--></legend>
+
+        <fieldset><legend><!--[pnml name=_GM_FIELD_MAP]--></legend>
         <dl class="gmclearfix">
             <!--[capture assign="googlekeylink"]--><a href="http://code.google.com/apis/maps/"><!--[ pnml name="_GM_GOOGLEKEY" ]--></a><!--[/capture]-->
             <dt><!--[ pnformlabel for="googlekey" text=$googlekeylink html=1 ]--></dt>
             <dd><!--[ pnformtextinput size="50" maxLength="100" id="googlekey" text=$pncore.gmap.googlekey|pnvarprepfordisplay ]--></dd>
-	
+
             <dt><!--[ pnformlabel for="initialtitle" text='_GM_INITIALTITLE']--></dt>
             <dd><!--[ pnformtextinput size="30" maxLength="50" id="initialtitle" text=$pncore.gmap.initialtitle|pnvarprepfordisplay ]--></dd>
 
@@ -27,57 +27,59 @@
 
             <dt><!--[ pnformlabel for="initialzoomlevel" text='_GM_INITIALZOOMLEVEL' ]--></dt>
             <dd><!--[ pnformdropdownlist id="initialzoomlevel" items=$zoomlevels selectedValue=$pncore.gmap.initialzoomlevel ]--></dd>
-	    
+
             <dt><!--[ pnformlabel for="mapheight" text='_GM_MAPHEIGHT' ]--></dt>
             <dd><!--[ pnformintinput size="5" maxLength="5" id="mapheight" text=$pncore.gmap.mapheight|pnvarprepfordisplay ]--></dd>
-	
+
             <dt><!--[ pnformlabel for="mapwidth" text='_GM_MAPWIDTH' ]--></dt>
             <dd><!--[ pnformintinput size="5" maxLength="5" id="mapwidth" text=$pncore.gmap.mapwidth|pnvarprepfordisplay ]--></dd>
 
-	    <dt><!--[ pnformlabel for="gmapfile" text='_GM_FILENAME' ]--></dt>
-            <dd><!--[ $basedirectory ]--><!--[ pnformtextinput size="40" maxLength="100" id="gmapfile" text=$pncore.gmap.gmapfile|pnvarprepfordisplay ]--></dd>	    
-	</dl>
-
+            <dt><!--[ pnformlabel for="overviewmap" text='_GM_OVERVIEWMAP' ]--></dt>
+            <dd><!--[ pnformcheckbox id="overviewmap" checked=$pncore.gmap.overviewmap ]--></dd>
+        </dl>
         </fieldset>
-      
-	<fieldset><legend><!--[pnml name=_GM_FIELD_SIDEBAR]--></legend>	
+
+        <fieldset><legend><!--[pnml name=_GM_FIELD_SIDEBAR]--></legend>
         <dl class="gmclearfix">	
             <dt><!--[ pnformlabel for="sidebarwidth" text='_GM_SIDEBARWIDTH' ]--></dt>
             <dd><!--[ pnformintinput size="5" maxLength="5" id="sidebarwidth" text=$pncore.gmap.sidebarwidth|pnvarprepfordisplay ]--></dd>
 
             <dt><!--[ pnformlabel for="showuserlist" text='_GM_SHOWUSERLIST' ]--></dt>
             <dd><!--[ pnformcheckbox id="showuserlist" checked=$pncore.gmap.showuserlist ]--></dd> 
-	    	
+
             <dt><!--[ pnformlabel for="listheightuser" text='_GM_LISTHEIGHTUSER' ]--></dt>
             <dd><!--[ pnformintinput size="5" maxLength="5" id="listheightuser" text=$pncore.gmap.listheightuser|pnvarprepfordisplay ]--></dd>
-	    	
+
             <dt><!--[ pnformlabel for="showspecialslist" text='_GM_SHOWSPECIALSLIST' ]--></dt>
             <dd><!--[ pnformcheckbox id="showspecialslist" checked=$pncore.gmap.showspecialslist ]--></dd> 
-	    	
+
             <dt><!--[ pnformlabel for="listheightspecials" text='_GM_LISTHEIGHTSPECIALS' ]--></dt>
             <dd><!--[ pnformintinput size="5" maxLength="5" id="listheightspecials" text=$pncore.gmap.listheightspecials|pnvarprepfordisplay ]--></dd>
-	</dl>
-	</fieldset>
-	
-	<fieldset><legend><!--[pnml name=_GM_FIELD_LEGEND]--></legend>		
-        <dl class="gmclearfix">	    	
+        </dl>
+        </fieldset>
+
+        <fieldset><legend><!--[pnml name=_GM_FIELD_LEGEND]--></legend>
+        <dl class="gmclearfix">
             <dt><!--[ pnformlabel for="legendmarkershow" text='_GM_LEGENDMARKERSHOW' ]--></dt>
             <dd><!--[ pnformcheckbox id="legendmarkershow" checked=$pncore.gmap.legendmarkershow ]--></dd> 
-	    	
+
             <dt><!--[ pnformlabel for="legendmarkercolumns" text='_GM_LEGENDMARKERCOLUMNS' ]--></dt>
-            <dd><!--[ pnformintinput size="2" maxLength="2" id="legendmarkercolumns" text=$pncore.gmap.legendmarkercolumns|pnvarprepfordisplay ]--></dd>
+            <dd><!--[ pnformintinput id="legendmarkercolumns" size="2" maxLength="2" text=$pncore.gmap.legendmarkercolumns|pnvarprepfordisplay ]--></dd>
 
             <dt><!--[ pnformlabel for="legendspecialshow" text='_GM_LEGENDSPECIALSHOW' ]--></dt>
             <dd><!--[ pnformcheckbox id="legendspecialshow" checked=$pncore.gmap.legendspecialshow ]--></dd> 
-	    	
+
             <dt><!--[ pnformlabel for="legendspecialcolumns" text='_GM_LEGENDSPECIALCOLUMNS' ]--></dt>
-            <dd><!--[ pnformintinput size="2" maxLength="2" id="legendspecialcolumns" text=$pncore.gmap.legendspecialcolumns|pnvarprepfordisplay ]--></dd>
-	    	
+            <dd><!--[ pnformintinput id="legendspecialcolumns" size="2" maxLength="2" text=$pncore.gmap.legendspecialcolumns|pnvarprepfordisplay ]--></dd>
+
             <dt><!--[ pnformlabel for="showsearch" text='_GM_SEARCHSHOW' ]--></dt>
             <dd><!--[ pnformcheckbox id="showsearch" checked=$pncore.gmap.showsearch ]--></dd>
-	</dl>	    
-	</fieldset>
-	
+        </dl>
+        </fieldset>
+
+        <fieldset><legend><!--[pnml name=_GM_FIELD_INFORMATION]--></legend>
+            <!--[pnformtextinput id="information" maxLength="2500" textMode="Multiline" cols="100" rows="25" text=$pncore.gmap.information|pnvarprepfordisplay]-->
+        </fieldset>
     </div>
     <p>
         <!--[pnformbutton id="submit" commandName="submit" text="_UPDATECONFIG"]-->

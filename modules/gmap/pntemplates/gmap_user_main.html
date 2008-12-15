@@ -1,5 +1,9 @@
 <!--[* $Id$ *]-->
-<h2 id="maptitle"><!--[$pncore.gmap.initialtitle|pnvarprepfordisplay]--></h2>
+<h2 id="maptitle">
+<!--[if $gmapfile]--><!--[pnml name='_GM_LOADING']-->
+<!--[else]--><!--[$pncore.gmap.initialtitle|pnvarprepfordisplay]-->
+<!--[/if]-->
+</h2>
 <!--[pngetstatusmsg]-->
 <div class="gmap">
  
@@ -38,7 +42,7 @@
 
       <div id="legendcontainer" style="margin:auto">
       <form name="legend" action="">
-      <!--[if $pncore.gmap.legendmarkershow]--><!--[* Fixes ticket:6 *]-->
+      <!--[if $pncore.gmap.legendmarkershow]-->      
           <!--[* $numCols is the number of columns *]-->
           <!--[assign var="numCols" value=$pncore.gmap.legendmarkercolumns]-->
           <table id="legendtablemarker" >
@@ -110,7 +114,7 @@
       </form>
       </div>
 
-      <!--[* Fixes ticket:2 *]-->
+      <!--[* Fixes Ticket #2 *]-->
       <!--[if $pncore.gmap.showsearch]-->      
       <form action="#" onsubmit="showAddress(this.address.value); return false">
           <p> <!--[pnml name='_GM_SEARCH']-->
@@ -119,4 +123,5 @@
           </p>
       </form>
       <!--[/if]-->
+      <div id="mapinformation"><!--[$pncore.gmap.information|pnvarprephtmldisplay]--></div>
 </div>
