@@ -75,8 +75,6 @@ define('_GM_WRONGCOORDINATES',         'Fehler: ungültige Koordinaten');
 define('_GM_ZOOMIN',                   'Einzoomen');
 define('_GM_ZOOMLEVEL',                'Zoomlevel');
 define('_GM_ZOOMOUT',                  'Auszoomen');
-
-<<<<<<< .mine
 define('_GM_SEARCHGO',                 'Suchen');    // Fixes Ticket #2
 define('_GM_SEARCH',                   'Adresse:');  // Fixes Ticket #2
 define('_GM_SEARCHSHOW',               'Adressensuche anzeigen'); // Fixes Ticket #2
