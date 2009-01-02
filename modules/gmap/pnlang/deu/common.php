@@ -76,53 +76,43 @@ define('_GM_ZOOMIN',                   'Einzoomen');
 define('_GM_ZOOMLEVEL',                'Zoomlevel');
 define('_GM_ZOOMOUT',                  'Auszoomen');
 
-// These need to be translated.  Afterwards, please alpha sort with the other defines
-define('_GM_SEARCHGO',                 'Search');    // Fixes Ticket #2
-define('_GM_SEARCH',                   'Address:');  // Fixes Ticket #2
-define('_GM_SEARCHSHOW',               'Show Address Search form'); // Fixes Ticket #2
-define('_GM_LEGENDSPECIALSHOW',        'Show Special Marker Legend'); 
-define('_GM_LEGENDSPECIALCOLUMNS',     'Number of columns for Special Marker Legend');
-define('_GM_LEGENDMARKERSHOW',         'Show Marker Legend'); 
-define('_GM_LEGENDMARKERCOLUMNS',      'Number of columns for Marker Legend');
-define('_GM_ADMIN_PINTABLE_FILENAME',  'File');
-define('_GM_ADMIN_PINTABLE_NAME',      'Name');
-define('_GM_ADMIN_PINTABLE_ACTIVE',    'Active');
-define('_GM_ADMIN_BTN_SUBMIT',         'Submit');
-define('_GM_ADMIN_PINTABLE_ALIAS_HINT','The name will be used to identify the marker.  Only active markers will be shown.');
-define('_GM_ADMIN_TITLE_MARKERS',      'Edit Markers');
-define('_GM_ADMIN_TITLE_MAPSETTINGS',  'Map Settings');
-define('_GM_ADMIN_TITLE_EDITPINS',     'Marker Settings');
-define('_GM_ADMIN_TITLE_READPINSFROMFILESYSTEM', 'Scan for new Marker image files');
-define('_GM_ADMIN_LABEL_READFROMFILESYSTEM',     'With confirmation, all markers are read out of the module directory. Old markers without a image in the directory will be deleted. Prior changes on marker information will be kept.');
-define('_GM_ADMIN_CONFIRM_READFROMFILESYSTEM',   'Should the markers be read out of the directories?');
-define('_GM_FORCERELOAD',              'Force the reload of markers, all existing marker data will be overwritten!');
-define('_GM_ADMIN_EDITPINS_SPECIAL',   'Special Markers');
-define('_GM_ADMIN_EDITPINS_MARKERS',   'User Markers');
-define('_GM_ADMIN_EDITEDPINSSAVED',    'Edited Markers Saved');
-define('_GM_ADMIN_PINSREADFROMFILESYSTEM', 'Markers Reloaded from module directories');
-define('_GM_INITIALTITLE',             'Map default Title');
-define('_GM_FIELD_MAP',                'Map Display');
-define('_GM_FIELD_SIDEBAR',            'Side Bar Display');
-define('_GM_FIELD_LEGEND',             'Marker Legend Display');
-define('_GM_FILENAME',                 'File path and name for additional markers (blank for none)');
-define('_GM_FIELDSET_MAP',             'Google Map Settings');
-define('_GM_FIELDSET_SIDEBAR',         'Side Bar Settings');
-define('_GM_FIELDSET_SPECIALS',        'Special Marker Settings');
-define('_GM_LISTHEIGHTSPECIALS',       'Special Marker list maximum height');
-define('_GM_LISTHEIGHTUSER',           'Users list maximum height');
-define('_GM_SHOWSPECIALSLIST',         'Show Special Marker list in sidebar');
-define('_GM_SPECIAL_SHOW',             'Show Pin');
-define('_GM_SPECIAL_PIN',              'Pin');
-define('_GM_SPECIAL_LABEL',            'Pin Label');
-define('_GM_EDIT',                     'Edit');
-define('_GM_ADMIN_TITLE_EDITMAPS',      'Map Files');
-define('_GM_ADMIN_MAP_HINT',            'Map files allow sets of markers and lines to be defined in a separate file. Each file can be called by adding the option &map=<mapname>. The path and filename are relative to: ');
-define('_GM_ADMIN_DEFAULTMAP',          'Default Map');
-define('_GM_ADMIN_EDITMAPS',            'Other Maps');
-define('_GM_ADMIN_MAPTABLE_NAME',       'Map name');
-define('_GM_ADMIN_MAPTABLE_FILENAME',   'File');
-define('_GM_ADMIN_PINTABLE_DELETE',     'Delete');
-define('_GM_ADMIN_PINTABLE_ADD',        'Add');
-define('_GM_FIELD_INFORMATION',         'Map Information (HTML Text)');
-define('_GM_OVERVIEWMAP',               'Display Overview Map');
-define('_GM_LOADING',                   'Loading Map...');
+<<<<<<< .mine
+define('_GM_SEARCHGO',                 'Suchen');    // Fixes Ticket #2
+define('_GM_SEARCH',                   'Adresse:');  // Fixes Ticket #2
+define('_GM_SEARCHSHOW',               'Adressensuche anzeigen'); // Fixes Ticket #2
+define('_GM_LEGENDSPECIALSHOW',        'Legende für spezielle Marker anzeigen'); 
+define('_GM_LEGENDSPECIALCOLUMNS',     'Anzahl der Spalten für die Anzeige der speziellen Marker');
+define('_GM_LEGENDMARKERSHOW',         'Legende für Marker anzeigen'); 
+define('_GM_LEGENDMARKERCOLUMNS',      'Anzahl der Spalten für die Anzeige der Marker');
+define('_GM_ADMIN_PINTABLE_FILENAME',  'Datei');
+define('_GM_ADMIN_PINTABLE_ACTIVE',    'Aktiv');
+define('_GM_ADMIN_BTN_SUBMIT',         'Übertragen');
+define('_GM_ADMIN_PINTABLE_ALIAS_HINT','Der Name wird verwendet, um den Marker zu identifizieren. Nur aktive Marker werden angezeigt');
+define('_GM_ADMIN_TITLE_MARKERS',      'Marker ändern');
+define('_GM_ADMIN_TITLE_MAPSETTINGS',  'Karteneinstellungen');
+define('_GM_ADMIN_TITLE_EDITPINS',     'Markereinstellungen');
+define('_GM_ADMIN_TITLE_READPINSFROMFILESYSTEM', 'Suche nach Bildern für neue Marker');
+define('_GM_ADMIN_LABEL_READFROMFILESYSTEM',     'Alle MArker werden nun aus dem Modulverzeichnis eingelesen. Alte Marker ohne Bild werden gelöscht. Vorhandene MArkereinstellungen bleiben erhalten.');
+define('_GM_ADMIN_CONFIRM_READFROMFILESYSTEM',   'Marker neu einlesen?');
+define('_GM_FORCERELOAD',              'Neueinlesen der MArker erzwingen, vorhandene Marker werden dabei überschrieben!');
+define('_GM_ADMIN_EDITPINS_SPECIAL',   'Spezielle Marker');
+define('_GM_ADMIN_EDITPINS_MARKERS',   'Benutzer-Marker');
+define('_GM_ADMIN_EDITEDPINSSAVED',    'Geänderte Marker wurden gespeichert');
+define('_GM_ADMIN_PINSREADFROMFILESYSTEM', 'Marker wurden von Dateisystem eingelesen');
+define('_GM_INITIALTITLE',             'Standardkartentitel');
+define('_GM_FIELD_MAP',                'Kartenanzeige');
+define('_GM_FIELD_SIDEBAR',            'Anzeige der Sidebar');
+define('_GM_FIELD_LEGEND',             'Anzeige der Markerlegende');
+define('_GM_FILENAME',                 'Pfad und Dateiname für weitere Marker (Leer = kein weiteren Marker)');
+define('_GM_FIELDSET_MAP',             'GoogleMap-Einstellungen');
+define('_GM_FIELDSET_SIDEBAR',         'Sidebar-Einstellungen');
+define('_GM_FIELDSET_SPECIALS',        'Einstellungen für spezielle Marker');
+define('_GM_LISTHEIGHTSPECIALS',       'Max. Höhe für Liste der speziellen Marker');
+define('_GM_LISTHEIGHTUSER',           'Max. Höhe für Benutzerliste');
+define('_GM_SHOWSPECIALSLIST',         'Spezielle Marker in Sidebar anzeigen');
+define('_GM_SPECIAL_SHOW',             'Marker anzeigen');
+define('_GM_SPECIAL_PIN',              'Marker');
+define('_GM_SPECIAL_LABEL',            'Markertext');
+define('_GM_EDIT',                     'Ändern');
+define('_GM_SIDEBARWIDTH',             'Breite der Sidebar');
+
