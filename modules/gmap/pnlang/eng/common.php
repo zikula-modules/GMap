@@ -63,7 +63,7 @@ define('_GM_GOOGLEKEY',                'GoogleMap API Key');
 define('_GM_ICON',                     'icon');
 define('_GM_ID',                       'ID');
 define('_GM_ILLEGALLATITUDE',          'Error: Latitude must be between  +180 (North) and -180 (South).');
-define('_GM_ILLEGALLONGITUDE',         'Error: Longitude must be between +180 (East) und -180 (West) sein.');
+define('_GM_ILLEGALLONGITUDE',         'Error: Longitude must be between +180 (East) und -180 (West).');
 define('_GM_ILLEGALMARKERID',          'Error: illegal marker ID');
 define('_GM_INITIALLATITUDE',          'Map default Latitude');
 define('_GM_INITIALLONGITUDE',         'Map default Longitude');
